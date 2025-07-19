@@ -65,7 +65,7 @@ export default function Home() {
       </button>
 
       {/* Fixed Rotated Text Left Side */}
-      <div className="fixed top-1/2 left-0 -translate-y-1/2 -rotate-90 font-black text-[2rem] tracking-tighter pointer-events-none select-none z-40"
+      <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-black text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
         style={{ color: isDarkMode ? '#f5f5f5' : '#2f2f2f' }}
       >
         DELIA
