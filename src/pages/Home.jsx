@@ -63,7 +63,7 @@ export default function Home() {
         isDarkMode ? 'bg-black border-[#f5f5f5]' : 'bg-[#8bae7e] border-[#2f2f2f]'
       }`}>
         {/* Nav Bar */}
-        <nav className={`w-full flex flex-wrap justify-center gap-6 py-8 border-b-4 uppercase font-black text-[1.25rem] tracking-tighter ${
+        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-6 py-8 border-b-4 uppercase font-black text-[1.25rem] tracking-tighter ${
           isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5]' : 'border-[#2f2f2f] text-[#2f2f2f]'
         }`}>
           {['home', 'videos', 'music', 'merch', 'bio', 'shows', 'contact'].map((item, idx) => (
@@ -72,8 +72,8 @@ export default function Home() {
               href={`#${item}`}
               className={`hover:bg-[#bba3d4] hover:text-white px-3 py-1 border-4 transition-all duration-150 ${
                 isDarkMode
-                  ? 'border-[#f5f5f5] text-[#f5f5f5]'
-                  : 'border-[#2f2f2f] text-[#2f2f2f]'
+                  ? 'border-[#f5f5f5] text-[#f5f5f5] bg-black'
+                  : 'border-[#2f2f2f] text-[#2f2f2f] bg-[#8bae7e]'
               }`}
               style={{ letterSpacing: '-0.05em' }}
             >
@@ -88,7 +88,7 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.9, skewX: 5 }}
           animate={{ opacity: 1, scale: 1, skewX: 0 }}
           transition={{ duration: 0.7 }}
-          className="max-w-7xl mx-auto px-8 py-20 text-center"
+          className="max-w-7xl mx-auto px-8 pt-36 pb-20 text-center"
         >
           <h1 className="font-black uppercase text-[8rem] tracking-tighter leading-none select-none"
             style={{ color: isDarkMode ? '#f5f5f5' : '#2f2f2f' }}
