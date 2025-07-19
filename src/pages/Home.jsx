@@ -154,70 +154,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* About Section with aggressive grid and thick borders */}
-      <section
-        id="bio"
-        className={`max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
-          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f]'
-        }`}
-      >
-        <motion.h2
-          initial={{ opacity: 0, x: -50, skewX: 10 }}
-          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="col-span-12 text-[3rem] leading-none select-none"
-        >
-          ABOUT DELIA
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, x: 50, skewX: -10 }}
-          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="col-span-12 md:col-span-8 text-[1.25rem] leading-snug tracking-tight select-text"
-          style={{ lineHeight: 1.3 }}
-        >
-          Delia makes music for the quiet in-betweens, the memories that hit you out of nowhere,
-          the version of you that still believes in feeling things fully. It’s not about going back, it’s about holding on to what matters as you move forward. It’s a soundscape for the sensitive — where vulnerability is the star of the show.
-        </motion.p>
-      </section>
-
-      {/* Poster-style journal section */}
-      <section className={`mt-32 px-8 py-16 max-w-6xl mx-auto border-4 uppercase font-black tracking-tight ${
-        isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5] bg-[#3b3b3b]' : 'border-[#2f2f2f] text-[#2f2f2f] bg-[#f5f5f5]'
-      }`}>
-        <motion.h2 
-          initial={{ opacity: 0, y: 50 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8 }} 
-          viewport={{ once: true }} 
-          className="text-[3rem] mb-10 select-none">
-          Delia Diaries
-        </motion.h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[1, 2, 3].map((entry) => (
-            <motion.div 
-              key={entry}
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.6, delay: entry * 0.2 }} 
-              viewport={{ once: true }}
-              className={`p-6 flex flex-col gap-4 border-4 ${
-                isDarkMode ? 'border-[#f5f5f5] bg-[#2f2f2f]' : 'border-[#2f2f2f] bg-[#f5f5f5]'
-              }`}
-            >
-              <h3 className="text-[1.25rem]">{`ENTRY ${entry}`}</h3>
-              <p className={`tracking-tight leading-snug text-[1rem] ${
-                isDarkMode ? 'text-[#f5f5f5]' : 'text-[#2f2f2f]'
-              }`}>
-                A behind-the-scenes peek at a moment that shaped the sound. These diary snippets reveal the vibe behind the vibe.
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
       {/* Listen and Follow Sections with grid and stark styling */}
       <section id="music" className={`max-w-6xl mx-auto mt-20 px-8 grid grid-cols-1 md:grid-cols-2 gap-12 uppercase font-black tracking-tight ${
         isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f] bg-[#f5f5f5]'
@@ -279,6 +215,78 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* About Section with aggressive grid and thick borders */}
+      <section
+        id="bio"
+        className={`max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
+          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f]'
+        }`}
+      >
+        <motion.h2
+          initial={{ opacity: 0, x: -50, skewX: 10 }}
+          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="col-span-12 text-[3rem] leading-none select-none"
+        >
+          A LETTER TO THE AUDIENCE
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0, x: 50, skewX: -10 }}
+          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="col-span-12 md:col-span-10 text-[1.25rem] leading-snug tracking-tight select-text flex flex-col gap-4"
+          style={{ lineHeight: 1.5 }}
+        >
+          <p>DELIA all started with two kids who grew up neighbors with a vision to build a community much bigger than themselves.</p>
+          <p>We all go through highs and lows in this journey of life, but it's the in-between moments that are the ones we believe in focusing on. Those are the times when you may be transitioning from one chapter in your life to the next, typically filled with noise, distraction, and high energy. But these moments are also some of the most important.</p>
+          <p>What we call the in-betweens.</p>
+          <p>We want to help you embrace those moments. Let go of the stress or anxiety, and live in what's real. We are here to help navigate you through the chaos and find peace in the now, in the present, to be real, and to be alive in the moment.</p>
+          <p>DELIA is more than just music – it's the energy you need to get through the in-between moments in life.</p>
+          <p className="pt-4">Let's all live in this moment, together.</p>
+          <p className="pt-2 self-end">– DELIA</p>
+        </motion.div>
+      </section>
+
+      {/* Poster-style journal section */}
+      <section className={`mt-32 px-8 py-16 max-w-6xl mx-auto border-4 uppercase font-black tracking-tight ${
+        isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5] bg-[#3b3b3b]' : 'border-[#2f2f2f] text-[#2f2f2f] bg-[#f5f5f5]'
+      }`}>
+        <motion.h2 
+          initial={{ opacity: 0, y: 50 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8 }} 
+          viewport={{ once: true }} 
+          className="text-[3rem] mb-10 select-none">
+          Delia Diaries
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[1, 2, 3].map((entry) => (
+            <motion.div 
+              key={entry}
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.6, delay: entry * 0.2 }} 
+              viewport={{ once: true }}
+              className={`p-6 flex flex-col gap-4 border-4 ${
+                isDarkMode ? 'border-[#f5f5f5] bg-[#2f2f2f]' : 'border-[#2f2f2f] bg-[#f5f5f5]'
+              }`}
+            >
+              <h3 className="text-[1.25rem]">{`ENTRY ${entry}`}</h3>
+              <p className={`tracking-tight leading-snug text-[1rem] ${
+                isDarkMode ? 'text-[#f5f5f5]' : 'text-[#2f2f2f]'
+              }`}>
+                A behind-the-scenes peek at a moment that shaped the sound. These diary snippets reveal the vibe behind the vibe.
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      
       {/* Contact and Mailing List Section */}
       <section
         id="contact"
