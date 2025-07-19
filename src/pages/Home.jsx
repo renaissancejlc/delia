@@ -54,7 +54,7 @@ export default function Home() {
         alt="DELIA Logo"
         className="fixed top-6 left-2 w-[160px] z-50 opacity-100 pointer-events-none"
       />
-      {/* Ambient Sound Control Bottom-Left */}
+      {/* Ambient Sound Control Bottom-Left
       <button
         onClick={() => setIsPlaying(!isPlaying)}
         className="fixed bottom-6 left-6 z-50 p-3 bg-[#f6e6d9] text-[#5a5a5a] rounded-sm border-2 border-[#5a5a5a] shadow-[0_0_0_2px_#5a5a5a] flex items-center justify-center"
@@ -70,12 +70,12 @@ export default function Home() {
             <polygon points="5,3 19,12 5,21" />
           </svg>
         )}
-      </button>
+      </button> */}
 
       {/* Dark Mode Toggle Button */}
       <button
         onClick={() => setIsDarkMode(!isDarkMode)}
-        className="fixed bottom-6 left-20 z-50 p-3 bg-[#f6e6d9] text-[#5a5a5a] rounded-sm border-2 border-[#5a5a5a] shadow-[0_0_0_2px_#5a5a5a] hover:bg-[#bba3d4] transition-colors"
+        className="fixed bottom-6 left-6 z-50 p-3 bg-[#f6e6d9] text-[#5a5a5a] rounded-sm border-2 border-[#5a5a5a] shadow-[0_0_0_2px_#5a5a5a] flex items-center justify-center"
         aria-label="Toggle dark mode"
       >
         <span className="w-6 h-6 flex items-center justify-center">
