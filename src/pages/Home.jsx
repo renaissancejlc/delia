@@ -247,7 +247,7 @@ export default function Home() {
           <p>We all go through highs and lows in this journey of life, but it's the in-between moments that are the ones we believe in focusing on. Those are the times when you may be transitioning from one chapter in your life to the next, typically filled with noise, distraction, and high energy. But these moments are also some of the most important.</p>
           <p>What we call the in-betweens.</p>
           <p>We want to help you embrace those moments. Let go of the stress or anxiety, and live in what's real. We are here to help navigate you through the chaos and find peace in the now, in the present, to be real, and to be alive in the moment.</p>
-          <p>DELIA is more than just music – it's the energy you need to get through the in-between moments in life.</p>
+          <p>DELIA is more than just music, it's the energy you need to get through the in-between moments in life.</p>
           <p className="pt-4">Let's all live in this moment, together.</p>
           <p className="pt-2 self-end">– DELIA</p>
         </motion.div>
