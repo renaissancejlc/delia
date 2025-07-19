@@ -117,7 +117,7 @@ export default function Home() {
         {/* Main title block with parallax scroll */}
         <motion.div
           id="home"
-          className="scroll-mt-28 max-w-7xl mx-auto px-8 pt-48 sm:pt-40 md:pt-36 pb-20 text-center"
+          className="scroll-mt-28 max-w-7xl mx-auto px-8 pt-48 sm:pt-40 md:pt-36 pb-4 text-center"
           style={{ y }}
           initial={{ opacity: 0, scale: 0.9, skewX: 5 }}
           animate={{ opacity: 1, scale: 1, skewX: 0 }}
@@ -131,16 +131,16 @@ export default function Home() {
           <h2 className="mt-4 uppercase font-black text-[2rem] tracking-tight"
             style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
           >
-            IN-BETWEEN MOMENTS TOUR 2025
+            FOR THE IN-BETWEEN MOMENTS
           </h2>
         </motion.div>
 
-        {/* Large tagline */}
+        {/* Large tagline
         <div className={`uppercase font-black text-[3rem] tracking-tighter text-center border-t-4 py-6 select-none ${
           isDarkMode ? 'text-[#f5f5f5] border-[#f5f5f5]' : 'text-[#5a5a5a] border-[#5a5a5a]'
         }`}>
           MUSIC FOR THE IN-BETWEEN
-        </div>
+        </div> */}
 
         {/* About Section with aggressive grid and thick borders */}
       <section
@@ -154,9 +154,9 @@ export default function Home() {
           whileInView={{ opacity: 1, x: 0, skewX: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="col-span-12 text-[3rem] leading-none select-none"
+          className="col-span-12 text-[3rem] leading-none select-none text-center"
         >
-          A LETTER TO THE AUDIENCE
+          Who is DELIA?
         </motion.h2>
 
         <motion.div
@@ -164,7 +164,7 @@ export default function Home() {
           whileInView={{ opacity: 1, x: 0, skewX: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           viewport={{ once: true }}
-          className="col-span-12 md:col-span-10 text-[1.25rem] leading-snug tracking-tight select-text flex flex-col gap-4"
+          className="col-span-12 md:col-span-10 md:col-start-2 text-[1.25rem] leading-snug tracking-tight select-text flex flex-col gap-4 text-center items-center"
           style={{ lineHeight: 1.5 }}
         >
           <p>DELIA all started with two kids who grew up neighbors with a vision to build a community much bigger than themselves.</p>
@@ -173,7 +173,7 @@ export default function Home() {
           <p>We want to help you embrace those moments. Let go of the stress or anxiety, and live in what's real. We are here to help navigate you through the chaos and find peace in the now, in the present, to be real, and to be alive in the moment.</p>
           <p>DELIA is more than just music, it's the energy you need to get through the in-between moments in life.</p>
           <p className="pt-4">Let's all live in this moment, together.</p>
-          <p className="pt-2 self-end">– DELIA</p>
+          <p className="pt-2 self-center text-center">– DELIA</p>
         </motion.div>
       </section>
 
