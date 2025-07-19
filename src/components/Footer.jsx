@@ -3,73 +3,68 @@ import { Facebook, Instagram, Youtube, Twitter } from 'lucide-react';
 import { FaTiktok } from 'react-icons/fa';
 
 export default function Footer() {
-  return (
-    <footer className="bg-black text-white px-8 py-24 font-serif tracking-wider leading-relaxed">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 text-sm">
-        <div>
-          {/* <h3 className="font-bold uppercase mb-4">Follow</h3>
-          <ul className="flex space-x-4">
-            <li>
-              <a href="#" aria-label="Facebook">
-                <Facebook className="h-5 w-5 hover:text-gray-400 transition" />
-              </a>
-            </li>
-            <li>
-              <a href="#" aria-label="Instagram">
-                <Instagram className="h-5 w-5 hover:text-gray-400 transition" />
-              </a>
-            </li>
-            <li>
-              <a href="#" aria-label="YouTube">
-                <Youtube className="h-5 w-5 hover:text-gray-400 transition" />
-              </a>
-            </li>
-            <li>
-              <a href="#" aria-label="TikTok">
-                <FaTiktok className="h-5 w-5 hover:text-gray-400 transition" />
-              </a>
-            </li>
-            <li>
-              <a href="#" aria-label="Twitter">
-                <Twitter className="h-5 w-5 hover:text-gray-400 transition" />
-              </a>
-            </li>
-          </ul> */}
-        </div>
-
-        <div>
-          <h3 className="font-bold uppercase mb-2">Doug Cooper</h3>
-          <ul className="space-y-1">
-            <li><a href="/about" className="hover:underline">About Doug</a></li>
-            <li><a href="/press" className="hover:underline">Press</a></li>
-            {/* <li><a href="/shop" className="hover:underline">Shop Doug</a></li> */}
-            <li><a href="/books" className="hover:underline">Books</a></li>
-            <li><a href="/contact" className="hover:underline">Connect with Doug</a></li>
-            <li><a href="/events" className="hover:underline">Events</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-bold uppercase mb-2">Support</h3>
-          <ul className="space-y-1">
-            <li><a href="/contact" className="hover:underline">Contact</a></li>
-            <li><a href="/shipping-and-returns" className="hover:underline">Shipping &amp; Returns</a></li>
-            <li><a href="/faq" className="hover:underline">FAQ</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-bold uppercase mb-2">Legal</h3>
-          <ul className="space-y-1">
-            <li><a href="/terms-of-use" className="hover:underline">Terms of Use</a></li>
-            <li><a href="/privacy-policy" className="hover:underline">Privacy Policy</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="mt-20 border-t border-gray-700 pt-6 text-xs text-center text-gray-400">
-        © 2025, Doug Cooper | Website designed & developed by <a href="https://vadis.studio" className="hover:underline">vadis.studio</a>
-      </div>
-    </footer>
+  return (                <footer
+                  className={`w-full px-4 py-8 text-center z-10 relative
+                  ${isDarkMode ? "bg-black/80 text-gray-200" : "bg-[#a0c4d0]/80 text-[#2f2f2f]"}
+                  flex flex-col items-center gap-2`}
+                >
+                  <div className="flex flex-row items-center justify-center gap-6 text-2xl mb-2">
+                    <a
+                      href="https://instagram.com/"
+                      aria-label="Instagram"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#94b17c] transition"
+                    >
+                      <FontAwesomeIcon icon={faInstagram} />
+                    </a>
+                    <a
+                      href="https://youtube.com/"
+                      aria-label="YouTube"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#94b17c] transition"
+                    >
+                      <FontAwesomeIcon icon={faYoutube} />
+                    </a>
+                    <a
+                      href="https://open.spotify.com/artist/3rQGgfHdCqkfNNpJBbGAbI"
+                      aria-label="Spotify"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#94b17c] transition"
+                    >
+                      <FontAwesomeIcon icon={faSpotify} />
+                    </a>
+                    <a
+                      href="https://tiktok.com/"
+                      aria-label="TikTok"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#94b17c] transition"
+                    >
+                      <FontAwesomeIcon icon={faTiktok} />
+                    </a>
+                    <a
+                      href="https://music.apple.com/us/artist/delia/1691680286"
+                      aria-label="Apple Music"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#94b17c] transition"
+                    >
+                      <FontAwesomeIcon icon={faApple} />
+                    </a>
+                    <a
+                      href="mailto:madebydelia1@gmail.com"
+                      aria-label="Email"
+                      className="hover:text-[#94b17c] transition"
+                    >
+                      <FontAwesomeIcon icon={faEnvelope} />
+                    </a>
+                  </div>
+                  <div className="text-xs opacity-70">
+                    &copy; {new Date().getFullYear()} DELIA. All rights reserved.
+                  </div>
+                </footer>
   );
 }

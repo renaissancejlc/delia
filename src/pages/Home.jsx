@@ -296,7 +296,7 @@ export default function Home() {
       {/* Contact and Mailing List Section */}
       <section
         id="contact"
-        className={`scroll-mt-28 w-full max-w-7xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-hidden ${
+        className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-hidden ${
           isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f] bg-[#f5f5f5]'
         }`}
       >
@@ -412,7 +412,7 @@ export default function Home() {
             >
               <div className="flex flex-row items-center justify-center gap-6 text-2xl mb-2">
                 <a
-                  href="https://instagram.com/madebydelia"
+                  href="https://instagram.com/"
                   aria-label="Instagram"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -421,7 +421,7 @@ export default function Home() {
                   <FontAwesomeIcon icon={faInstagram} />
                 </a>
                 <a
-                  href="https://youtube.com/@madebydelia"
+                  href="https://youtube.com/"
                   aria-label="YouTube"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -439,7 +439,7 @@ export default function Home() {
                   <FontAwesomeIcon icon={faSpotify} />
                 </a>
                 <a
-                  href="https://tiktok.com/@madebydelia"
+                  href="https://tiktok.com/"
                   aria-label="TikTok"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -466,6 +466,7 @@ export default function Home() {
               </div>
               <div className="text-xs opacity-70">
                 &copy; {new Date().getFullYear()} DELIA. All rights reserved.
+                <a href="/privacy-policy" className="ml-2 underline hover:text-[#94b17c] transition">Privacy Policy</a>
               </div>
             </footer>
     </div>
