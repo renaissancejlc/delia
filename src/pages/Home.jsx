@@ -83,12 +83,13 @@ export default function Home() {
         </nav>
 
         {/* Main title block with parallax scroll */}
-        <motion.div id="home"
+        <motion.div
+          id="home"
+          className="scroll-mt-28 max-w-7xl mx-auto px-8 pt-48 sm:pt-40 md:pt-36 pb-20 text-center"
           style={{ y }}
           initial={{ opacity: 0, scale: 0.9, skewX: 5 }}
           animate={{ opacity: 1, scale: 1, skewX: 0 }}
           transition={{ duration: 0.7 }}
-          className="max-w-7xl mx-auto px-8 pt-48 sm:pt-40 md:pt-36 pb-20 text-center"
         >
           <h1 className="font-black uppercase text-[8rem] tracking-tighter leading-none select-none"
             style={{ color: isDarkMode ? '#f5f5f5' : '#2f2f2f' }}
@@ -140,9 +141,12 @@ export default function Home() {
         </div>
 
         {/* YouTube Embed with no padding, background depends on dark mode */}
-        <div id ="videos" className={`w-full max-w-4xl mx-auto border-4 ${
-          isDarkMode ? 'border-[#f5f5f5] bg-[#2f2f2f]' : 'border-[#2f2f2f] bg-[#a0c4d0]'
-        }`}>
+        <div
+          id="videos"
+          className={`scroll-mt-28 w-full max-w-4xl mx-auto border-4 ${
+            isDarkMode ? 'border-[#f5f5f5] bg-[#2f2f2f]' : 'border-[#2f2f2f] bg-[#a0c4d0]'
+          }`}
+        >
           <iframe
             className="w-full aspect-video"
             src="https://www.youtube.com/embed/shqQJgJ4W5k?si=sMdELTZTZOkBHoR4"
@@ -155,7 +159,7 @@ export default function Home() {
       </header>
 
       {/* Listen and Follow Sections with grid and stark styling */}
-      <section id="music" className="mt-20 px-4">
+      <section id="music" className="scroll-mt-28 mt-20 px-4">
         <div className={`overflow-x-auto max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 uppercase font-black tracking-tight max-w-6xl ${
           isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f] bg-[#f5f5f5]'
         }`}>
@@ -221,7 +225,7 @@ export default function Home() {
       {/* About Section with aggressive grid and thick borders */}
       <section
         id="bio"
-        className={`max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
+        className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
           isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f]'
         }`}
       >
@@ -292,7 +296,7 @@ export default function Home() {
       {/* Contact and Mailing List Section */}
       <section
         id="contact"
-        className={`w-full max-w-7xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-hidden ${
+        className={`scroll-mt-28 w-full max-w-7xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-hidden ${
           isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f] bg-[#f5f5f5]'
         }`}
       >
