@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faYoutube, faSpotify, faTiktok, faApple } from '@fortawesome/free-brands-svg-icons';
@@ -8,10 +9,22 @@ export default function Home() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const logoRef = useRef(null);
 
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 300], [0, 20]);
 
+  // Scroll-based logo rotation
+  useEffect(() => {
+    const handleScroll = () => {
+      if (logoRef.current) {
+        const rotation = window.scrollY * 0.2;
+        logoRef.current.style.transform = `rotate(${rotation}deg)`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   // Scroll to anchor if hash is present in URL (e.g., /#contact)
   useEffect(() => {
     if (window.location.hash) {
@@ -33,12 +46,18 @@ export default function Home() {
 
   return (
     <div className={`relative min-h-screen font-sans tracking-tight overflow-x-hidden ${
-      isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#2f2f2f]'
-    }`}>
+      isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#5a5a5a]'
+    } overflow-x-hidden`}>
+      <img
+        ref={logoRef}
+        src="/images/logo.png"
+        alt="DELIA Logo"
+        className="fixed top-12 left-2 w-[120px] z-50 opacity-100 pointer-events-none"
+      />
       {/* Ambient Sound Control Bottom-Left */}
       <button
         onClick={() => setIsPlaying(!isPlaying)}
-        className="fixed bottom-6 left-6 z-50 p-3 bg-[#f6e6d9] text-[#2f2f2f] rounded-sm border-2 border-[#2f2f2f] shadow-[0_0_0_2px_#2f2f2f] flex items-center justify-center"
+        className="fixed bottom-6 left-6 z-50 p-3 bg-[#f6e6d9] text-[#5a5a5a] rounded-sm border-2 border-[#5a5a5a] shadow-[0_0_0_2px_#5a5a5a] flex items-center justify-center"
         aria-label={isPlaying ? 'Pause ambient sound' : 'Play ambient sound'}
       >
         {isPlaying ? (
@@ -56,7 +75,7 @@ export default function Home() {
       {/* Dark Mode Toggle Button */}
       <button
         onClick={() => setIsDarkMode(!isDarkMode)}
-        className="fixed bottom-6 left-20 z-50 p-3 bg-[#f6e6d9] text-[#2f2f2f] rounded-sm border-2 border-[#2f2f2f] shadow-[0_0_0_2px_#2f2f2f] hover:bg-[#bba3d4] transition-colors"
+        className="fixed bottom-6 left-20 z-50 p-3 bg-[#f6e6d9] text-[#5a5a5a] rounded-sm border-2 border-[#5a5a5a] shadow-[0_0_0_2px_#5a5a5a] hover:bg-[#bba3d4] transition-colors"
         aria-label="Toggle dark mode"
       >
         <span className="w-6 h-6 flex items-center justify-center">
@@ -66,27 +85,27 @@ export default function Home() {
 
       {/* Fixed Rotated Text Left Side */}
       <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-black text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
-        style={{ color: isDarkMode ? '#f5f5f5' : '#2f2f2f' }}
+        style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
       >
         DELIA
       </div>
 
       {/* Hero Section */}
       <header className={`relative z-30 border-b-4 ${
-        isDarkMode ? 'bg-black border-[#f5f5f5]' : 'bg-[#8bae7e] border-[#2f2f2f]'
+        isDarkMode ? 'bg-black border-[#f5f5f5]' : 'bg-[#8bae7e] border-[#5a5a5a]'
       }`}>
         {/* Nav Bar */}
         <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 py-4 sm:py-6 md:py-8 border-b-4 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
-          isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5]' : 'border-[#2f2f2f] text-[#2f2f2f]'
+          isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5]' : 'border-[#5a5a5a] text-[#5a5a5a]'
         }`}>
-          {['home', 'videos', 'music', 'merch', 'bio', 'shows', 'contact'].map((item, idx) => (
+          {[ 'music', 'mission', 'visuals'].map((item, idx) => (
             <a
               key={idx}
               href={`${item === 'home' ? '/' : `/#${item}`}`}
               className={`hover:bg-[#bba3d4] hover:text-white px-3 py-1 border-4 transition-all duration-150 ${
                 isDarkMode
                   ? 'border-[#f5f5f5] text-[#f5f5f5] bg-black'
-                  : 'border-[#2f2f2f] text-[#2f2f2f] bg-[#8bae7e]'
+                  : 'border-[#5a5a5a] text-[#5a5a5a] bg-[#8bae7e]'
               }`}
               style={{ letterSpacing: '-0.05em' }}
             >
@@ -105,12 +124,12 @@ export default function Home() {
           transition={{ duration: 0.7 }}
         >
           <h1 className="font-black uppercase text-[8rem] tracking-tighter leading-none select-none"
-            style={{ color: isDarkMode ? '#f5f5f5' : '#2f2f2f' }}
+            style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
           >
             DELIA
           </h1>
           <h2 className="mt-4 uppercase font-black text-[2rem] tracking-tight"
-            style={{ color: isDarkMode ? '#f5f5f5' : '#2f2f2f' }}
+            style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
           >
             IN-BETWEEN MOMENTS TOUR 2025
           </h2>
@@ -118,7 +137,7 @@ export default function Home() {
 
         {/* Large tagline */}
         <div className={`uppercase font-black text-[3rem] tracking-tighter text-center border-t-4 py-6 select-none ${
-          isDarkMode ? 'text-[#f5f5f5] border-[#f5f5f5]' : 'text-[#2f2f2f] border-[#2f2f2f]'
+          isDarkMode ? 'text-[#f5f5f5] border-[#f5f5f5]' : 'text-[#5a5a5a] border-[#5a5a5a]'
         }`}>
           MUSIC FOR THE IN-BETWEEN
         </div>
@@ -139,7 +158,7 @@ export default function Home() {
               className={`px-6 py-4 uppercase font-black text-[0.875rem] tracking-tight max-w-xs select-none ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#2f2f2f]'
+                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a]'
               }`}
               style={{
                 clipPath:
@@ -157,7 +176,7 @@ export default function Home() {
         <div
           id="videos"
           className={`scroll-mt-28 w-full max-w-4xl mx-auto border-4 ${
-            isDarkMode ? 'border-[#f5f5f5] bg-[#2f2f2f]' : 'border-[#2f2f2f] bg-[#a0c4d0]'
+            isDarkMode ? 'border-[#f5f5f5] bg-[#5a5a5a]' : 'border-[#5a5a5a] bg-[#a0c4d0]'
           }`}
         >
           <iframe
@@ -174,14 +193,14 @@ export default function Home() {
       {/* Listen and Follow Sections with grid and stark styling */}
       <section id="music" className="scroll-mt-28 mt-20 px-4">
         <div className={`overflow-x-auto max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 uppercase font-black tracking-tight max-w-6xl ${
-          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f] bg-[#f5f5f5]'
+          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] border-4 border-[#5a5a5a] bg-[#f5f5f5]'
         }`}>
         <div className={`p-8 flex flex-col gap-6 border-4 ${
-          isDarkMode ? 'border-[#f5f5f5]' : 'border-[#2f2f2f]'
+          isDarkMode ? 'border-[#f5f5f5]' : 'border-[#5a5a5a]'
         }`}>
           <p className="text-[1.5rem] tracking-tighter select-none">LISTEN ON:</p>
           <div className={`flex gap-8 text-[1.25rem] ${
-            isDarkMode ? 'text-[#f5f5f5]' : 'text-[#2f2f2f]'
+            isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
           }`}>
             {['https://spotify.com', 'https://music.apple.com'].map((href, idx) => (
               <motion.a
@@ -203,11 +222,11 @@ export default function Home() {
         </div>
 
         <div className={`p-8 flex flex-col gap-6 border-4 ${
-          isDarkMode ? 'border-[#f5f5f5]' : 'border-[#2f2f2f]'
+          isDarkMode ? 'border-[#f5f5f5]' : 'border-[#5a5a5a]'
         }`}>
           <p className="text-[1.5rem] tracking-tighter select-none">FOLLOW:</p>
           <div className={`flex gap-8 text-[1.25rem] ${
-            isDarkMode ? 'text-[#f5f5f5]' : 'text-[#2f2f2f]'
+            isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
           }`}>
             {[
               { href: 'https://instagram.com', icon: faInstagram },
@@ -239,7 +258,7 @@ export default function Home() {
       <section
         id="bio"
         className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
-          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f]'
+          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5]' : 'text-[#5a5a5a] border-4 border-[#5a5a5a]'
         }`}
       >
         <motion.h2
@@ -272,7 +291,7 @@ export default function Home() {
 
       {/* Poster-style journal section */}
       <section className={`mt-32 px-8 py-16 max-w-6xl mx-auto border-4 uppercase font-black tracking-tight ${
-        isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5] bg-[#3b3b3b]' : 'border-[#2f2f2f] text-[#2f2f2f] bg-[#f5f5f5]'
+        isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5] bg-[#3b3b3b]' : 'border-[#5a5a5a] text-[#5a5a5a] bg-[#f5f5f5]'
       }`}>
         <motion.h2 
           initial={{ opacity: 0, y: 50 }} 
@@ -291,12 +310,12 @@ export default function Home() {
               transition={{ duration: 0.6, delay: entry * 0.2 }} 
               viewport={{ once: true }}
               className={`p-6 flex flex-col gap-4 border-4 ${
-                isDarkMode ? 'border-[#f5f5f5] bg-[#2f2f2f]' : 'border-[#2f2f2f] bg-[#f5f5f5]'
+                isDarkMode ? 'border-[#f5f5f5] bg-[#5a5a5a]' : 'border-[#5a5a5a] bg-[#f5f5f5]'
               }`}
             >
               <h3 className="text-[1.25rem]">{`ENTRY ${entry}`}</h3>
               <p className={`tracking-tight leading-snug text-[1rem] ${
-                isDarkMode ? 'text-[#f5f5f5]' : 'text-[#2f2f2f]'
+                isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
               }`}>
                 A behind-the-scenes peek at a moment that shaped the sound. These diary snippets reveal the vibe behind the vibe.
               </p>
@@ -309,8 +328,8 @@ export default function Home() {
       {/* Contact and Mailing List Section */}
       <section
         id="contact"
-        className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-hidden ${
-          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f] bg-[#f5f5f5]'
+        className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 md:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-x-hidden ${
+          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] border-4 border-[#5a5a5a] bg-[#f5f5f5]'
         }`}
       >
         <motion.div
@@ -318,22 +337,22 @@ export default function Home() {
           whileInView={{ opacity: 1, x: 0, skewX: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="col-span-12 md:col-span-6 flex flex-col gap-8"
+          className="w-full md:col-span-6 flex flex-col gap-8"
         >
           <h3 className="text-[2rem] select-none">CONTACT US</h3>
           <form
             action="mailto:madebydelia1@gmail.com"
             method="POST"
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-6 w-full max-w-full"
           >
             <input
               type="text"
               name="name"
               placeholder="NAME"
-              className={`p-3 uppercase tracking-tight font-black placeholder-[#2f2f2f] ${
+              className={`w-full max-w-full p-3 uppercase tracking-tight font-black placeholder-[#5a5a5a] ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#2f2f2f] text-[#2f2f2f] placeholder-[#2f2f2f]'
+                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
               }`}
               required
             />
@@ -341,10 +360,10 @@ export default function Home() {
               type="email"
               name="email"
               placeholder="EMAIL"
-              className={`p-3 uppercase tracking-tight font-black placeholder-[#2f2f2f] ${
+              className={`w-full max-w-full p-3 uppercase tracking-tight font-black placeholder-[#5a5a5a] ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#2f2f2f] text-[#2f2f2f] placeholder-[#2f2f2f]'
+                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
               }`}
               required
             />
@@ -352,16 +371,16 @@ export default function Home() {
               name="message"
               rows="5"
               placeholder="YOUR MESSAGE"
-              className={`p-3 uppercase tracking-tight font-black resize-none placeholder-[#2f2f2f] ${
+              className={`w-full max-w-full p-3 uppercase tracking-tight font-black resize-none placeholder-[#5a5a5a] ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#2f2f2f] text-[#2f2f2f] placeholder-[#2f2f2f]'
+                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
               }`}
               required
             />
             <button
               type="submit"
-              className="bg-[#f6e6d9] text-[#2f2f2f] font-black uppercase tracking-tight py-3 border-4 border-[#2f2f2f] hover:bg-[#bba3d4] hover:text-white transition-colors"
+              className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#bba3d4] hover:text-white transition-colors"
             >
               SEND MESSAGE
             </button>
@@ -373,24 +392,24 @@ export default function Home() {
           whileInView={{ opacity: 1, x: 0, skewX: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           viewport={{ once: true }}
-          className="col-span-12 md:col-span-6 flex flex-col gap-8"
+          className="w-full md:col-span-6 flex flex-col gap-8"
         >
           <h3 className="text-[2rem] select-none">JOIN THE MAILING LIST</h3>
-          <form className="flex flex-col gap-6">
+          <form className="flex flex-col gap-6 w-full max-w-full">
             <input
               type="email"
               name="email"
               placeholder="YOUR EMAIL"
-              className={`p-3 uppercase tracking-tight font-black placeholder-[#2f2f2f] ${
+              className={`w-full max-w-full p-3 uppercase tracking-tight font-black placeholder-[#5a5a5a] ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#2f2f2f] text-[#2f2f2f] placeholder-[#2f2f2f]'
+                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
               }`}
               required
             />
             <button
               type="submit"
-              className="bg-[#f6e6d9] text-[#2f2f2f] font-black uppercase tracking-tight py-3 border-4 border-[#2f2f2f] hover:bg-[#bba3d4] hover:text-white transition-colors"
+              className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#bba3d4] hover:text-white transition-colors"
             >
               SUBSCRIBE
             </button>
@@ -420,7 +439,7 @@ export default function Home() {
        {/* Footer */}
             <footer
               className={`w-full px-4 py-8 text-center z-10 relative
-              ${isDarkMode ? "bg-black/80 text-gray-200" : "bg-[#a0c4d0]/80 text-[#2f2f2f]"}
+              ${isDarkMode ? "bg-black/80 text-gray-200" : "bg-[#a0c4d0]/80 text-[#5a5a5a]"}
               flex flex-col items-center gap-2`}
             >
               <div className="flex flex-row items-center justify-center gap-6 text-2xl mb-2">

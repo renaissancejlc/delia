@@ -21,6 +21,17 @@ h1, h2, h3 {
 html {
   scroll-behavior: smooth;
 }
+.spin-on-scroll {
+  transition: transform 0.1s linear;
+}
+
+body {
+  --scroll-rotation: 0deg;
+}
+
+.spin-on-scroll {
+  transform: rotate(var(--scroll-rotation));
+}
 
 /* html, body {
   cursor: none;
