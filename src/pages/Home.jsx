@@ -52,7 +52,7 @@ export default function Home() {
         ref={logoRef}
         src="/images/logo.png"
         alt="DELIA Logo"
-        className="fixed top-6 left-2 w-[160px] z-50 opacity-100 pointer-events-none"
+        className="fixed top-6 left-2 w-[100px] sm:w-[140px] md:w-[160px] z-50 opacity-100 pointer-events-none"
       />
       {/* Ambient Sound Control Bottom-Left
       <button
