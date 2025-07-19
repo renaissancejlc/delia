@@ -52,7 +52,7 @@ export default function Home() {
         ref={logoRef}
         src="/images/logo.png"
         alt="DELIA Logo"
-        className="fixed top-6 left-2 w-[100px] sm:w-[140px] md:w-[160px] z-50 opacity-100 pointer-events-none"
+        className="fixed top-20 sm:top-6 left-2 w-[100px] sm:w-[140px] md:w-[160px] z-40 opacity-100 pointer-events-none"
       />
       {/* Ambient Sound Control Bottom-Left
       <button
@@ -95,7 +95,7 @@ export default function Home() {
         isDarkMode ? 'bg-black border-[#f5f5f5]' : 'bg-[#8bae7e] border-[#5a5a5a]'
       }`}>
         {/* Nav Bar */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 py-4 sm:py-6 md:py-8 border-b-4 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
+        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 pt-6 pb-4 sm:pt-8 sm:pb-6 md:pt-10 md:pb-8 border-b-4 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
           isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5]' : 'border-[#5a5a5a] text-[#5a5a5a]'
         }`}>
           {[ 'music', 'mission', 'visuals'].map((item, idx) => (
