@@ -60,7 +60,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <header className={`relative z-30 border-b-4 ${
-        isDarkMode ? 'bg-[#3b3b3b] border-[#f5f5f5]' : 'bg-[#8bae7e] border-[#2f2f2f]'
+        isDarkMode ? 'bg-black border-[#f5f5f5]' : 'bg-[#8bae7e] border-[#2f2f2f]'
       }`}>
         {/* Nav Bar */}
         <nav className={`w-full flex flex-wrap justify-center gap-6 py-8 border-b-4 uppercase font-black text-[1.25rem] tracking-tighter ${
@@ -155,9 +155,10 @@ export default function Home() {
       </header>
 
       {/* Listen and Follow Sections with grid and stark styling */}
-      <section id="music" className={`max-w-6xl mx-auto mt-20 px-8 grid grid-cols-1 md:grid-cols-2 gap-12 uppercase font-black tracking-tight ${
-        isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f] bg-[#f5f5f5]'
-      }`}>
+      <section id="music" className="mt-20 px-4">
+        <div className={`overflow-x-auto max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 uppercase font-black tracking-tight max-w-6xl ${
+          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f] bg-[#f5f5f5]'
+        }`}>
         <div className={`p-8 flex flex-col gap-6 border-4 ${
           isDarkMode ? 'border-[#f5f5f5]' : 'border-[#2f2f2f]'
         }`}>
@@ -212,6 +213,7 @@ export default function Home() {
               </motion.a>
             ))}
           </div>
+        </div>
         </div>
       </section>
 
@@ -385,7 +387,7 @@ export default function Home() {
       {/* Background glitch radial gradient */}
       <div className="fixed inset-0 pointer-events-none z-10 bg-[radial-gradient(ellipse_at_center,_rgba(255,0,0,0.15)_0%,_transparent_70%)]" />
 
-      <audio ref={audioRef} src="/audio/loop.mp3" loop preload="auto" />
+      <audio ref={audioRef} src="/audio/loop.aiff" loop preload="auto" />
 
       <style>{`
         @keyframes floatGrain {
