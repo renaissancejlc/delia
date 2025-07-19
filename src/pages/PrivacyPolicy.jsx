@@ -191,7 +191,9 @@ export default function PrivacyPolicy() {
               </div>
               <div className="text-xs opacity-70">
                 &copy; {new Date().getFullYear()} DELIA. All rights reserved.
+                <a href="/privacy-policy" className="ml-2 underline hover:text-[#94b17c] transition">Privacy Policy</a>
               </div>
+              
             </footer>
     </div>
   );

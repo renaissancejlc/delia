@@ -12,6 +12,19 @@ export default function Home() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 300], [0, 20]);
 
+  // Scroll to anchor if hash is present in URL (e.g., /#contact)
+  useEffect(() => {
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        // Wait for DOM to settle
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, []);
+
   useEffect(() => {
     if (audioRef.current) {
       isPlaying ? audioRef.current.play() : audioRef.current.pause();
@@ -69,7 +82,7 @@ export default function Home() {
           {['home', 'videos', 'music', 'merch', 'bio', 'shows', 'contact'].map((item, idx) => (
             <a
               key={idx}
-              href={`#${item}`}
+              href={`${item === 'home' ? '/' : `/#${item}`}`}
               className={`hover:bg-[#bba3d4] hover:text-white px-3 py-1 border-4 transition-all duration-150 ${
                 isDarkMode
                   ? 'border-[#f5f5f5] text-[#f5f5f5] bg-black'
