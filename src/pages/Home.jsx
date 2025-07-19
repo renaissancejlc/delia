@@ -83,7 +83,7 @@ export default function Home() {
         </nav>
 
         {/* Main title block with parallax scroll */}
-        <motion.div
+        <motion.div id="home"
           style={{ y }}
           initial={{ opacity: 0, scale: 0.9, skewX: 5 }}
           animate={{ opacity: 1, scale: 1, skewX: 0 }}
