@@ -52,7 +52,7 @@ export default function Home() {
         ref={logoRef}
         src="/images/logo.png"
         alt="DELIA Logo"
-        className="fixed top-12 left-2 w-[120px] z-50 opacity-100 pointer-events-none"
+        className="fixed top-6 left-2 w-[200px] z-50 opacity-70 pointer-events-none"
       />
       {/* Ambient Sound Control Bottom-Left */}
       <button
@@ -142,12 +142,49 @@ export default function Home() {
           MUSIC FOR THE IN-BETWEEN
         </div>
 
+        {/* About Section with aggressive grid and thick borders */}
+      <section
+        id="bio"
+        className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
+          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] border-4 border-[#5a5a5a] bg-white'
+        }`}
+      >
+        <motion.h2
+          initial={{ opacity: 0, x: -50, skewX: 10 }}
+          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="col-span-12 text-[3rem] leading-none select-none"
+        >
+          A LETTER TO THE AUDIENCE
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0, x: 50, skewX: -10 }}
+          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="col-span-12 md:col-span-10 text-[1.25rem] leading-snug tracking-tight select-text flex flex-col gap-4"
+          style={{ lineHeight: 1.5 }}
+        >
+          <p>DELIA all started with two kids who grew up neighbors with a vision to build a community much bigger than themselves.</p>
+          <p>We all go through highs and lows in this journey of life, but it's the in-between moments that are the ones we believe in focusing on. Those are the times when you may be transitioning from one chapter in your life to the next, typically filled with noise, distraction, and high energy. But these moments are also some of the most important.</p>
+          <p>What we call the in-betweens.</p>
+          <p>We want to help you embrace those moments. Let go of the stress or anxiety, and live in what's real. We are here to help navigate you through the chaos and find peace in the now, in the present, to be real, and to be alive in the moment.</p>
+          <p>DELIA is more than just music, it's the energy you need to get through the in-between moments in life.</p>
+          <p className="pt-4">Let's all live in this moment, together.</p>
+          <p className="pt-2 self-end">– DELIA</p>
+        </motion.div>
+      </section>
+
+      
+
         {/* Asymmetric blocks with rough borders */}
         <div className="flex flex-wrap justify-center gap-6 px-8 py-12 max-w-5xl mx-auto">
           {[
-            'BACK 2 BACK SETS',
-            'THE WHEEL PICKS THE SONGS',
-            'DIFFERENT EVERY NIGHT',
+            'should we do',
+            'something here',
+            'idk',
           ].map((label, idx) => (
             <motion.div
               key={idx}
@@ -254,75 +291,7 @@ export default function Home() {
       </section>
 
 
-      {/* About Section with aggressive grid and thick borders */}
-      <section
-        id="bio"
-        className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
-          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5]' : 'text-[#5a5a5a] border-4 border-[#5a5a5a]'
-        }`}
-      >
-        <motion.h2
-          initial={{ opacity: 0, x: -50, skewX: 10 }}
-          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="col-span-12 text-[3rem] leading-none select-none"
-        >
-          A LETTER TO THE AUDIENCE
-        </motion.h2>
-
-        <motion.div
-          initial={{ opacity: 0, x: 50, skewX: -10 }}
-          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="col-span-12 md:col-span-10 text-[1.25rem] leading-snug tracking-tight select-text flex flex-col gap-4"
-          style={{ lineHeight: 1.5 }}
-        >
-          <p>DELIA all started with two kids who grew up neighbors with a vision to build a community much bigger than themselves.</p>
-          <p>We all go through highs and lows in this journey of life, but it's the in-between moments that are the ones we believe in focusing on. Those are the times when you may be transitioning from one chapter in your life to the next, typically filled with noise, distraction, and high energy. But these moments are also some of the most important.</p>
-          <p>What we call the in-betweens.</p>
-          <p>We want to help you embrace those moments. Let go of the stress or anxiety, and live in what's real. We are here to help navigate you through the chaos and find peace in the now, in the present, to be real, and to be alive in the moment.</p>
-          <p>DELIA is more than just music, it's the energy you need to get through the in-between moments in life.</p>
-          <p className="pt-4">Let's all live in this moment, together.</p>
-          <p className="pt-2 self-end">– DELIA</p>
-        </motion.div>
-      </section>
-
-      {/* Poster-style journal section */}
-      <section className={`mt-32 px-8 py-16 max-w-6xl mx-auto border-4 uppercase font-black tracking-tight ${
-        isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5] bg-[#3b3b3b]' : 'border-[#5a5a5a] text-[#5a5a5a] bg-[#f5f5f5]'
-      }`}>
-        <motion.h2 
-          initial={{ opacity: 0, y: 50 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8 }} 
-          viewport={{ once: true }} 
-          className="text-[3rem] mb-10 select-none">
-          Delia Diaries
-        </motion.h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[1, 2, 3].map((entry) => (
-            <motion.div 
-              key={entry}
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.6, delay: entry * 0.2 }} 
-              viewport={{ once: true }}
-              className={`p-6 flex flex-col gap-4 border-4 ${
-                isDarkMode ? 'border-[#f5f5f5] bg-[#5a5a5a]' : 'border-[#5a5a5a] bg-[#f5f5f5]'
-              }`}
-            >
-              <h3 className="text-[1.25rem]">{`ENTRY ${entry}`}</h3>
-              <p className={`tracking-tight leading-snug text-[1rem] ${
-                isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
-              }`}>
-                A behind-the-scenes peek at a moment that shaped the sound. These diary snippets reveal the vibe behind the vibe.
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      
 
       
       {/* Contact and Mailing List Section */}
