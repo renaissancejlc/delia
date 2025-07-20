@@ -109,10 +109,17 @@ export default function Home() {
     }
   }, [isDarkMode]);
 
+
   return (
     <div className={`relative min-h-screen font-sans tracking-tight overflow-x-hidden ${
-      isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#5a5a5a]'
-    } overflow-x-hidden`}>
+      isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
+    }`}>
+      {/* Unified full-page background layer */}
+      <div className={`absolute inset-0 -z-10 bg-gradient-to-b ${
+        isDarkMode
+          ? 'from-black via-[#1a1a1a] to-[#330000]'
+          : 'from-[#8bae7e] via-[#a0c4d0] to-[#dce7dd]'
+      }`} />
       {/* Animated Logo: scroll-linked vertical motion, fixed after reaching top */}
       <div
         className="logo-container fixed z-50"
@@ -179,9 +186,9 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <header className={`relative z-30 ${
-        isDarkMode ? 'bg-black' : 'bg-[#8bae7e]'
-      }`}>
+      <header
+        className={`relative z-30 ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
+      >
         {/* Nav Bar */}
         <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 pt-6 pb-4 sm:pt-8 sm:pb-6 md:pt-10 md:pb-8 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
           isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
@@ -229,13 +236,11 @@ export default function Home() {
         }`}>
           MUSIC FOR THE IN-BETWEEN
         </div> */}
-
-        {/* About Section with aggressive grid and thick borders */}
+      </header>
+      {/* About Section with aggressive grid and thick borders */}
       <section
         id="mission"
-        className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
-          isDarkMode ? 'text-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] bg-white'
-        }`}
+        className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
       >
         <motion.h2
           initial={{ opacity: 0, x: -50, skewX: 10 }}
@@ -264,10 +269,8 @@ export default function Home() {
           <p className="pt-2 self-center text-center">– DELIA</p>
         </motion.div>
       </section>
-
-      
-
-        {/* Asymmetric blocks with rough borders */}
+       {/* Asymmetric blocks with rough borders */}
+       <section id="visuals" className={`${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}>
         <div className="flex flex-wrap justify-center gap-6 px-8 py-12 max-w-5xl mx-auto">
           {[
             'should we do',
@@ -295,14 +298,13 @@ export default function Home() {
               {label}
             </motion.div>
           ))}
-        </div>
+        </div>       </section>
+
 
         {/* YouTube Embed with no padding, background depends on dark mode */}
         <div
           id="visuals"
-          className={`scroll-mt-28 w-full max-w-4xl mx-auto ${
-            isDarkMode ? 'bg-[#5a5a5a]' : 'bg-[#a0c4d0]'
-          }`}
+          className={`scroll-mt-28 w-full max-w-4xl mx-auto ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
         >
           <iframe
             className="w-full aspect-video"
@@ -313,10 +315,17 @@ export default function Home() {
             frameBorder="0"
           />
         </div>
-      </header>
+
+        {/* Divider between YouTube and Music */}
+        <div className="w-full flex justify-center py-8">
+          <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-[#bba3d4] to-transparent dark:via-[#f5f5f5]" />
+        </div>
 
       {/* Featured Releases Section */}
-      <section id="music" className="scroll-mt-28 mt-20 px-4">
+      <section
+        id="music"
+        className={`scroll-mt-28 mt-20 px-4 ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
+      >
         <h2 className="text-center text-[2.5rem] font-black uppercase mb-12">
           <br></br>
         </h2>
@@ -434,9 +443,7 @@ export default function Home() {
       {/* Contact and Mailing List Section */}
       <section
         id="contact"
-        className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 md:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-x-hidden ${
-          isDarkMode ? 'text-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] bg-[#f5f5f5]'
-        }`}
+        className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 md:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-x-hidden ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
       >
         <motion.div
           initial={{ opacity: 0, x: -50, skewX: 10 }}
