@@ -140,7 +140,11 @@ export default function Home() {
           transition: 'top 0.2s ease-out',
         }}
       >
-        <a href="/">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+          aria-label="Scroll to top"
+        >
           <img
             src="/images/logo.png"
             alt="Delia Logo"
@@ -149,7 +153,7 @@ export default function Home() {
               transform: `rotate(${scrollY}deg)`,
             }}
           />
-        </a>
+        </button>
       </div>
       {/* Ambient Sound Control Bottom-Left
       <button
