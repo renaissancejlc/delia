@@ -322,10 +322,10 @@ export default function Home() {
           />
         </div>
 
-        {/* Divider between YouTube and Music */}
+        {/* Divider between YouTube and Music
         <div className="w-full flex justify-center py-8">
           <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-[#a0c4d0] to-transparent dark:via-[#f5f5f5]" />
-        </div>
+        </div> */}
 
       {/* Featured Releases Section */}
       <section
@@ -449,162 +449,174 @@ export default function Home() {
         id="contact"
         className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 md:px-8 py-16 flex flex-col gap-20 uppercase font-black tracking-tight overflow-x-hidden ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
       >
-         <motion.div
-          initial={{ opacity: 0, x: 50, skewX: -10 }}
-          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="w-full md:col-span-6 flex flex-col gap-8"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-            <div className="text-left">
-              <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[0.95] uppercase font-black tracking-[-0.09em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
-                JOIN THE <span className="text-[#96bdcb] underline underline-offset-8 decoration-[8px]">DELIA LIST</span><br />
-                & GET UPDATES.
-              </h3>
-            </div>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                showStatusBanner("✓ You're on the list. Stay tuned!");
-                e.currentTarget.reset();
-              }}
-              className="flex flex-col gap-5 w-full max-w-md"
-            >
-              <input
-                type="text"
-                name="first_name"
-                placeholder="First Name"
-                required
-                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
-                  isDarkMode
-                    ? 'text-white border-white placeholder-white'
-                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
-                }`}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
-                  isDarkMode
-                    ? 'text-white border-white placeholder-white'
-                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
-                }`}
-              />
-              <select
-                name="country"
-                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
-                  isDarkMode
-                    ? 'text-white border-white placeholder-white'
-                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
-                }`}
+        {/* Divider between YouTube and Music */}
+        <div className="w-full flex justify-center py-8">
+          <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-[#a0c4d0] to-transparent dark:via-[#f5f5f5]" />
+        </div>
+        <div className="w-full max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, x: 50, skewX: -10 }}
+            whileInView={{ opacity: 1, x: 0, skewX: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="w-full md:col-span-6 flex flex-col gap-8"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+              <div className="text-left">
+                <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[0.95] uppercase font-black tracking-[-0.09em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
+                  JOIN THE <span className="text-[#96bdcb] underline underline-offset-8 decoration-[8px]">DELIA LIST</span><br />
+                  & GET UPDATES.
+                </h3>
+              </div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  showStatusBanner("✓ You're on the list. Stay tuned!");
+                  e.currentTarget.reset();
+                }}
+                className="flex flex-col gap-5 w-full max-w-md"
               >
-                <option value="">Select Country</option>
-                {[
-                  "United States", "Canada", "United Kingdom", "Australia", "Germany",
-                  "France", "Japan", "India", "Brazil", "South Korea", "Other"
-                ].map((country) => (
-                  <option key={country} value={country}>{country}</option>
-                ))}
-              </select>
-              <button
-                type="submit"
-                className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-white text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-white"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: -50, skewX: 10 }}
-          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="w-full md:col-span-6"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-            <div className="text-left">
-              <h3 className="text-[4rem] md:text-[6.5rem] leading-[1] uppercase font-extrabold tracking-tight select-none text-left not-italic">
-                <span className="bg-[#f6e6d9] px-3 py-1 text-[#5a5a5a] shadow-[4px_4px_0_#5a5a5a] border-2 border-[#5a5a5a] inline-block">
-                  CONTACT US
-                </span>
-                <br />
-                <span className="text-[2rem] md:text-[2.75rem] tracking-widest text-[#a0c4d0] block mt-2">WE ACTUALLY READ IT.</span>
-              </h3>
+                <input
+                  type="text"
+                  name="first_name"
+                  placeholder="First Name"
+                  required
+                  className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                    isDarkMode
+                      ? 'text-white border-white placeholder-white'
+                      : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                  }`}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                    isDarkMode
+                      ? 'text-white border-white placeholder-white'
+                      : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                  }`}
+                />
+                <select
+                  name="country"
+                  className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                    isDarkMode
+                      ? 'text-white border-white placeholder-white'
+                      : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                  }`}
+                >
+                  <option value="">Select Country</option>
+                  {[
+                    "United States", "Canada", "United Kingdom", "Australia", "Germany",
+                    "France", "Japan", "India", "Brazil", "South Korea", "Other"
+                  ].map((country) => (
+                    <option key={country} value={country}>{country}</option>
+                  ))}
+                </select>
+                <button
+                  type="submit"
+                  className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-white text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-white"
+                >
+                  Subscribe
+                </button>
+              </form>
             </div>
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                const formElement = e.currentTarget;
-                const formData = new FormData(formElement);
-                try {
-                  const response = await fetch("https://formsubmit.co/ajax/contactvadisstudio@gmail.com", {
-                    method: "POST",
-                    headers: { "Accept": "application/json" },
-                    body: formData
-                  });
-                  const data = await response.json();
-                  if (response.ok) {
-                    showStatusBanner("✓ Message sent. Stay loud.");
-                    formElement.reset();
-                  } else {
+          </motion.div>
+          {/* Divider between YouTube and Music */}
+        <div className="w-full flex justify-center py-8">
+          <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-[#a0c4d0] to-transparent dark:via-[#f5f5f5]" />
+        </div>
+          <motion.div
+            initial={{ opacity: 0, x: -50, skewX: 10 }}
+            whileInView={{ opacity: 1, x: 0, skewX: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="w-full md:col-span-6"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+              <div className="text-left">
+                <h3 className="text-[4rem] md:text-[6.5rem] leading-[1] uppercase font-extrabold tracking-tight select-none text-left not-italic">
+                  <span className="bg-[#f6e6d9] px-3 py-1 text-[#5a5a5a] shadow-[4px_4px_0_#5a5a5a] border-2 border-[#5a5a5a] inline-block">
+                    CONTACT US
+                  </span>
+                  <br />
+                  <span className="text-[2rem] md:text-[2.75rem] tracking-widest text-[#a0c4d0] block mt-2">WE ACTUALLY READ IT.</span>
+                </h3>
+              </div>
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const formElement = e.currentTarget;
+                  const formData = new FormData(formElement);
+                  try {
+                    const response = await fetch("https://formsubmit.co/ajax/contactvadisstudio@gmail.com", {
+                      method: "POST",
+                      headers: { "Accept": "application/json" },
+                      body: formData
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                      showStatusBanner("✓ Message sent. Stay loud.");
+                      formElement.reset();
+                    } else {
+                      showStatusBanner("Failed to send. Try again.", "red");
+                    }
+                  } catch (error) {
+                    console.error('FormSubmit error:', error);
                     showStatusBanner("Failed to send. Try again.", "red");
                   }
-                } catch (error) {
-                  console.error('FormSubmit error:', error);
-                  showStatusBanner("Failed to send. Try again.", "red");
-                }
-              }}
-              className="flex flex-col gap-5 w-full max-w-md"
-            >
-              <input type="text" name="_honey" className="hidden" />
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                required
-                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
-                  isDarkMode
-                    ? 'text-white border-white placeholder-white'
-                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
-                }`}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
-                  isDarkMode
-                    ? 'text-white border-white placeholder-white'
-                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
-                }`}
-              />
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Your Message"
-                required
-                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 resize-none ${
-                  isDarkMode
-                    ? 'text-white border-white placeholder-white'
-                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
-                }`}
-              />
-              <button
-                type="submit"
-                className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-white text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-white"
+                }}
+                className="flex flex-col gap-5 w-full max-w-md"
               >
-                Send Message
-              </button>
-            </form>
-          </div>
-        </motion.div>
-
-
+                <input type="text" name="_honey" className="hidden" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  required
+                  className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                    isDarkMode
+                      ? 'text-white border-white placeholder-white'
+                      : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                  }`}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                    isDarkMode
+                      ? 'text-white border-white placeholder-white'
+                      : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                  }`}
+                />
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Your Message"
+                  required
+                  className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 resize-none ${
+                    isDarkMode
+                      ? 'text-white border-white placeholder-white'
+                      : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                  }`}
+                />
+                <button
+                  type="submit"
+                  className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-white text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-white"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </motion.div>
+          {/* Divider between YouTube and Music */}
+        <div className="w-full flex justify-center py-8">
+          <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-[#a0c4d0] to-transparent dark:via-[#f5f5f5]" />
+        </div>
+        </div>
       </section>
 
       {/* Grainy Overlay */}
