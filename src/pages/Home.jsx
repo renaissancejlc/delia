@@ -310,7 +310,7 @@ export default function Home() {
               >
                 <div className="flex items-center justify-center w-full h-full">
                   <motion.div
-                    className={`rounded-lg shadow-lg p-6 w-full max-w-md ${isDarkMode ? 'bg-[#121212] text-white' : 'bg-white text-black'}`}
+                    className={`relative rounded-lg shadow-lg p-6 w-full max-w-md ${isDarkMode ? 'bg-[#121212] text-white' : 'bg-white text-black'}`}
                     variants={modalVariants}
                     initial="hidden"
                     animate="visible"
@@ -319,7 +319,7 @@ export default function Home() {
                   >
                     <button
                       onClick={() => setSelectedTrack(null)}
-                      className="absolute top-3 right-3 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
+                      className="absolute top-4 right-4 z-10 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
                       aria-label="Close"
                       style={{
                         borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
