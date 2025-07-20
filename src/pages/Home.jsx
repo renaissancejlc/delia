@@ -114,15 +114,13 @@ export default function Home() {
       isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#5a5a5a]'
     } overflow-x-hidden`}>
       {/* Animated Logo: scroll-linked vertical motion, fixed after reaching top */}
-      <img
-        src="/images/logo.png"
-        alt="Delia Logo"
-        className="w-[160px] md:w-[200px] lg:w-[260px] xl:w-[300px] transition-transform duration-500 ease-out fixed z-50"
+      <div
+        className="logo-container fixed z-50"
         style={{
           position: 'fixed',
           top:
             windowWidth < 770
-              ? '1rem'
+              ? '3.5rem'
               : scrollY < 80
                 ? `${105 - scrollY}px`
                 : '12px',
@@ -132,13 +130,18 @@ export default function Home() {
               : scrollY < 80
                 ? `${135 - scrollY}px`
                 : '12px',
-          transform:
-            windowWidth < 770
-              ? `rotate(${scrollY}deg)`
-              : `rotate(${scrollY}deg)`,
           transition: 'top 0.2s ease-out',
         }}
-      />
+      >
+        <img
+          src="/images/logo.png"
+          alt="Delia Logo"
+          className="cd-logo transition-transform duration-500 ease-out"
+          style={{
+            transform: `rotate(${scrollY}deg)`,
+          }}
+        />
+      </div>
       {/* Ambient Sound Control Bottom-Left
       <button
         onClick={() => setIsPlaying(!isPlaying)}
@@ -608,6 +611,30 @@ export default function Home() {
 
         .grainy-motion {
           animation: floatGrain 12s ease-in-out infinite;
+        }
+        /* Responsive Delia Logo sizing */
+        .cd-logo {
+          max-width: 160px;
+          max-height: 160px;
+          display: block;
+        }
+        @media (min-width: 1024px) {
+          .cd-logo {
+            width: 160px;
+            height: 160px;
+          }
+        }
+        @media (min-width: 770px) and (max-width: 1023px) {
+          .cd-logo {
+            width: 120px;
+            height: 120px;
+          }
+        }
+        @media (max-width: 769px) {
+          .cd-logo {
+            width: 80px;
+            height: 80px;
+          }
         }
       `}</style>
 
