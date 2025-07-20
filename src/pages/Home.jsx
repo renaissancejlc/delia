@@ -314,12 +314,11 @@ export default function Home() {
         <AnimatePresence>
           {selectedTrack && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm`}
+              className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4 modal-backdrop"
               onClick={() => setSelectedTrack(null)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
             >
               <motion.div
                 className={`relative bg-white p-8 rounded-xl max-w-xs sm:max-w-md w-full text-center shadow-2xl modal-content-container ${
