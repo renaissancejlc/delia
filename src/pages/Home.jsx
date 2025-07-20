@@ -29,13 +29,23 @@ const songCovers = {
 
 
 export default function Home() {
-  const [formStatus, setFormStatus] = useState('');
-  const [showAnimation, setShowAnimation] = useState(false);
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState(null);
   const logoRef = useRef(null);
+
+  // Floating status banner helper
+  const showStatusBanner = (message, color = 'black') => {
+    const statusBox = document.createElement('div');
+    statusBox.innerText = message;
+    statusBox.className = `
+      fixed top-6 right-6 z-50 border-2 border-white shadow-md px-4 py-2 text-xs font-mono tracking-widest
+      ${color === 'red' ? 'bg-red-600 text-white' : 'bg-black text-white'}
+    `;
+    document.body.appendChild(statusBox);
+    setTimeout(() => statusBox.remove(), 5000);
+  };
 
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 300], [0, 20]);
@@ -414,16 +424,14 @@ export default function Home() {
                 console.log('FormSubmit response:', data);
 
                 if (response.ok) {
-                  setFormStatus('success');
-                  setShowAnimation(true);
-                  setTimeout(() => setShowAnimation(false), 5000);
+                  showStatusBanner("✓ Message sent. Stay loud.");
                   formElement.reset();
                 } else {
-                  setFormStatus('error');
+                  showStatusBanner("Failed to send. Try again.", "red");
                 }
               } catch (error) {
                 console.error('FormSubmit error:', error);
-                setFormStatus('error');
+                showStatusBanner("Failed to send. Try again.", "red");
               }
             }}
             className="flex flex-col gap-6 w-full max-w-full"
@@ -469,26 +477,7 @@ export default function Home() {
               >
                 Send
               </button>
-              {formStatus === 'success' && (
-                <div className={`px-4 py-3 border-4 uppercase tracking-tight text-center font-black ${
-                  isDarkMode
-                    ? 'bg-black text-[#f5f5f5] border-[#f5f5f5]'
-                    : 'bg-[#f6e6d9] text-[#5a5a5a] border-[#5a5a5a]'
-                }`}>
-                  ✓ MESSAGE SENT. 
-                </div>
-              )}
-              {formStatus === 'error' && (
-                <div className={`px-4 py-3 border-4 uppercase tracking-tight text-center font-black ${
-                  isDarkMode
-                    ? 'bg-red-900 text-white border-red-300'
-                    : 'bg-red-200 text-red-800 border-red-500'
-                }`}>
-                  ERROR — PLEASE TRY AGAIN
-                </div>
-              )}
             </div>
-            
           </form>
         </motion.div>
 
