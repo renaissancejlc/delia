@@ -140,14 +140,16 @@ export default function Home() {
           transition: 'top 0.2s ease-out',
         }}
       >
-        <img
-          src="/images/logo.png"
-          alt="Delia Logo"
-          className="cd-logo transition-transform duration-500 ease-out"
-          style={{
-            transform: `rotate(${scrollY}deg)`,
-          }}
-        />
+        <a href="/">
+          <img
+            src="/images/logo.png"
+            alt="Delia Logo"
+            className="cd-logo transition-transform duration-500 ease-out"
+            style={{
+              transform: `rotate(${scrollY}deg)`,
+            }}
+          />
+        </a>
       </div>
       {/* Ambient Sound Control Bottom-Left
       <button
