@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faYoutube, faSpotify, faTiktok, faApple } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faYoutube, faSpotify, faTiktok, faApple, faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 import { faSun, faMoon, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export default function PrivacyPolicy() {
@@ -28,17 +28,17 @@ export default function PrivacyPolicy() {
         isDarkMode ? 'bg-black border-[#f5f5f5]' : 'bg-[#8bae7e] border-[#2f2f2f]'
       }`}>
         {/* Nav Bar */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 py-4 sm:py-6 md:py-8 border-b-4 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
-          isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5]' : 'border-[#2f2f2f] text-[#2f2f2f]'
+        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 pt-6 pb-4 sm:pt-8 sm:pb-6 md:pt-10 md:pb-8 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
+          isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
         }`}>
-          {['home', 'videos', 'music', 'merch', 'bio', 'shows', 'contact'].map((item, idx) => (
+          {[ 'music', 'mission', 'visuals'].map((item, idx) => (
             <a
               key={idx}
-              href={`/#${item}`}
+              href={`${item === 'home' ? '/' : `/#${item}`}`}
               className={`hover:bg-[#bba3d4] hover:text-white px-3 py-1 border-4 transition-all duration-150 ${
                 isDarkMode
                   ? 'border-[#f5f5f5] text-[#f5f5f5] bg-black'
-                  : 'border-[#2f2f2f] text-[#2f2f2f] bg-[#8bae7e]'
+                  : 'border-[#5a5a5a] text-[#5a5a5a] bg-[#8bae7e]'
               }`}
               style={{ letterSpacing: '-0.05em' }}
             >
@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
         </nav>
       </header>
 
-      {/* Ambient Sound Control Bottom-Left */}
+      {/* Ambient Sound Control Bottom-Left
       <button
         onClick={() => setIsPlaying(!isPlaying)}
         className="fixed bottom-6 left-6 z-50 p-3 bg-[#f6e6d9] text-[#2f2f2f] rounded-sm border-2 border-[#2f2f2f] shadow-[0_0_0_2px_#2f2f2f] flex items-center justify-center"
@@ -64,12 +64,11 @@ export default function PrivacyPolicy() {
             <polygon points="5,3 19,12 5,21" />
           </svg>
         )}
-      </button>
-
-      {/* Dark Mode Toggle Button */}
+      </button> */}
+{/* Dark Mode Toggle Button */}
       <button
         onClick={() => setIsDarkMode(!isDarkMode)}
-        className="fixed bottom-6 left-20 z-50 p-3 bg-[#f6e6d9] text-[#2f2f2f] rounded-sm border-2 border-[#2f2f2f] shadow-[0_0_0_2px_#2f2f2f] hover:bg-[#bba3d4] transition-colors"
+        className="fixed bottom-6 left-6 z-50 p-3 bg-[#f6e6d9] text-[#5a5a5a] rounded-sm border-2 border-[#5a5a5a] shadow-[0_0_0_2px_#5a5a5a] flex items-center justify-center"
         aria-label="Toggle dark mode"
       >
         <span className="w-6 h-6 flex items-center justify-center">
@@ -78,15 +77,15 @@ export default function PrivacyPolicy() {
       </button>
 
       {/* Fixed Rotated Text Left Side */}
-      <div className="fixed top-1/2 left-0 -translate-y-1/2 -rotate-90 font-black text-[2rem] tracking-tighter pointer-events-none select-none z-40"
-        style={{ color: isDarkMode ? '#f5f5f5' : '#2f2f2f' }}
+      <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-black text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
+        style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
       >
         DELIA
       </div>
 
       {/* Main Privacy Policy Content */}
       <section className={`scroll-mt-[100px] w-full max-w-4xl mx-auto mt-40 px-8 py-16 font-sans tracking-tight ${
-        isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4 border-[#2f2f2f] bg-[#f5f5f5]'
+        isDarkMode ? 'text-[#f5f5f5] border-4  bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4  bg-[#f5f5f5]'
       }`}>
         <h1 className="text-4xl font-black uppercase mb-8 text-center">Privacy Policy</h1>
         <p className="mb-6">
@@ -181,6 +180,15 @@ export default function PrivacyPolicy() {
                 >
                   <FontAwesomeIcon icon={faApple} />
                 </a>
+                <a
+                                  href="https://soundcloud.com/your-soundcloud-url"
+                                  aria-label="SoundCloud"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="hover:text-[#94b17c] transition"
+                                >
+                                  <FontAwesomeIcon icon={faSoundcloud} />
+                                </a>
                 <a
                   href="mailto:madebydelia1@gmail.com"
                   aria-label="Email"
