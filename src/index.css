@@ -29,7 +29,7 @@ html {
   scroll-behavior: smooth;
 }
 .spin-on-scroll {
-  transition: transform 0.1s linear;
+  transition: transform 0.3s linear;
 }
 
 body {
