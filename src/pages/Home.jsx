@@ -447,163 +447,164 @@ export default function Home() {
       {/* Contact and Mailing List Section */}
       <section
         id="contact"
-        className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 md:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-x-hidden ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
+        className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 md:px-8 py-16 flex flex-col gap-20 uppercase font-black tracking-tight overflow-x-hidden ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
       >
-        <motion.div
-          initial={{ opacity: 0, x: -50, skewX: 10 }}
-          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="w-full md:col-span-6 flex flex-col gap-8"
-        >
-          <h3 className="text-[2rem] select-none">CONTACT US</h3>
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              const formElement = e.currentTarget;
-              const formData = new FormData(formElement);
-              try {
-                const response = await fetch("https://formsubmit.co/ajax/contactvadisstudio@gmail.com", {
-                  method: "POST",
-                  headers: {
-                    "Accept": "application/json"
-                  },
-                  body: formData
-                });
-
-                const data = await response.json();
-                console.log('FormSubmit response:', data);
-
-                if (response.ok) {
-                  showStatusBanner("✓ Message sent. Stay loud.");
-                  formElement.reset();
-                } else {
-                  showStatusBanner("Failed to send. Try again.", "red");
-                }
-              } catch (error) {
-                console.error('FormSubmit error:', error);
-                showStatusBanner("Failed to send. Try again.", "red");
-              }
-            }}
-            className="flex flex-col gap-6 w-full max-w-full"
-          >
-            <input type="text" name="_honey" style={{ display: 'none' }} />
-            <input
-              type="text"
-              name="name"
-              placeholder="NAME"
-              required
-              className={`w-full max-w-full p-3 uppercase tracking-tight font-black placeholder-[#5a5a5a] ${
-                isDarkMode
-                  ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
-              }`}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="EMAIL"
-              required
-              className={`w-full max-w-full p-3 uppercase tracking-tight font-black placeholder-[#5a5a5a] ${
-                isDarkMode
-                  ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
-              }`}
-            />
-            <textarea
-              name="message"
-              rows="5"
-              placeholder="YOUR MESSAGE"
-              required
-              className={`w-full max-w-full p-3 uppercase tracking-tight font-black resize-none placeholder-[#5a5a5a] ${
-                isDarkMode
-                  ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
-              }`}
-            />
-            <div className="flex items-center gap-4 flex-wrap">
-              <button
-                type="submit"
-                className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#a0c4d0] hover:text-white transition-colors"
-              >
-                SEND
-              </button>
-            </div>
-          </form>
-        </motion.div>
-
-        <motion.div
+         <motion.div
           initial={{ opacity: 0, x: 50, skewX: -10 }}
           whileInView={{ opacity: 1, x: 0, skewX: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           viewport={{ once: true }}
           className="w-full md:col-span-6 flex flex-col gap-8"
         >
-          <h3 className="text-[2rem] select-none">JOIN THE MAILING LIST</h3>
-          <form className="flex flex-col gap-6 w-full max-w-full">
-            <input
-              type="text"
-              name="first_name"
-              placeholder="FIRST NAME"
-              className={`w-full max-w-full p-3 uppercase tracking-tight font-black placeholder-[#5a5a5a] ${
-                isDarkMode
-                  ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
-              }`}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="YOUR EMAIL"
-              className={`w-full max-w-full p-3 uppercase tracking-tight font-black placeholder-[#5a5a5a] ${
-                isDarkMode
-                  ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
-              }`}
-              required
-            />
-            <select
-              name="country"
-              className={`w-full max-w-full p-3 uppercase tracking-tight font-black ${
-                isDarkMode
-                  ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a]'
-              }`}
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+            <div className="text-left">
+              <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[0.95] uppercase font-black tracking-[-0.09em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
+                JOIN THE <span className="text-[#96bdcb] underline underline-offset-8 decoration-[8px]">DELIA LIST</span><br />
+                & GET UPDATES.
+              </h3>
+            </div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                showStatusBanner("✓ You're on the list. Stay tuned!");
+                e.currentTarget.reset();
+              }}
+              className="flex flex-col gap-5 w-full max-w-md"
             >
-              <option value="">SELECT COUNTRY</option>
-              {[
-                "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
-                "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
-                "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia",
-                "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica",
-                "Croatia", "Cuba", "Cyprus", "Czech Republic", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador",
-                "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France",
-                "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau",
-                "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland",
-                "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan",
-                "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
-                "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia",
-                "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal",
-                "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan",
-                "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar",
-                "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
-                "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa",
-                "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan",
-                "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan",
-                "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City",
-                "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
-              ].map(country => (
-                <option key={country} value={country}>{country}</option>
-              ))}
-            </select>
-            <button
-              type="submit"
-              className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#a0c4d0] hover:text-white transition-colors"
-            >
-              SUBSCRIBE
-            </button>
-          </form>
+              <input
+                type="text"
+                name="first_name"
+                placeholder="First Name"
+                required
+                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                  isDarkMode
+                    ? 'text-white border-white placeholder-white'
+                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                }`}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                  isDarkMode
+                    ? 'text-white border-white placeholder-white'
+                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                }`}
+              />
+              <select
+                name="country"
+                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                  isDarkMode
+                    ? 'text-white border-white placeholder-white'
+                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                }`}
+              >
+                <option value="">Select Country</option>
+                {[
+                  "United States", "Canada", "United Kingdom", "Australia", "Germany",
+                  "France", "Japan", "India", "Brazil", "South Korea", "Other"
+                ].map((country) => (
+                  <option key={country} value={country}>{country}</option>
+                ))}
+              </select>
+              <button
+                type="submit"
+                className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-white text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-white"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -50, skewX: 10 }}
+          whileInView={{ opacity: 1, x: 0, skewX: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="w-full md:col-span-6"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+            <div className="text-left">
+              <h3 className="text-[4rem] md:text-[6.5rem] leading-[1] uppercase font-extrabold tracking-tight select-none text-left not-italic">
+                <span className="bg-[#f6e6d9] px-3 py-1 text-[#5a5a5a] shadow-[4px_4px_0_#5a5a5a] border-2 border-[#5a5a5a] inline-block">
+                  CONTACT US
+                </span>
+                <br />
+                <span className="text-[2rem] md:text-[2.75rem] tracking-widest text-[#a0c4d0] block mt-2">WE ACTUALLY READ IT.</span>
+              </h3>
+            </div>
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const formElement = e.currentTarget;
+                const formData = new FormData(formElement);
+                try {
+                  const response = await fetch("https://formsubmit.co/ajax/contactvadisstudio@gmail.com", {
+                    method: "POST",
+                    headers: { "Accept": "application/json" },
+                    body: formData
+                  });
+                  const data = await response.json();
+                  if (response.ok) {
+                    showStatusBanner("✓ Message sent. Stay loud.");
+                    formElement.reset();
+                  } else {
+                    showStatusBanner("Failed to send. Try again.", "red");
+                  }
+                } catch (error) {
+                  console.error('FormSubmit error:', error);
+                  showStatusBanner("Failed to send. Try again.", "red");
+                }
+              }}
+              className="flex flex-col gap-5 w-full max-w-md"
+            >
+              <input type="text" name="_honey" className="hidden" />
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                  isDarkMode
+                    ? 'text-white border-white placeholder-white'
+                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                }`}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
+                  isDarkMode
+                    ? 'text-white border-white placeholder-white'
+                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                }`}
+              />
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Your Message"
+                required
+                className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 resize-none ${
+                  isDarkMode
+                    ? 'text-white border-white placeholder-white'
+                    : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
+                }`}
+              />
+              <button
+                type="submit"
+                className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-white text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-white"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </motion.div>
+
+
       </section>
 
       {/* Grainy Overlay */}
