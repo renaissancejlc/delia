@@ -38,6 +38,8 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [logoY, setLogoY] = useState(80); // initial lower position
   const [isFixed, setIsFixed] = useState(false);
+  // Track window width for responsive logo transforms
+  const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1024);
 
   // Floating status banner helper
   const showStatusBanner = (message, color = 'black') => {
@@ -54,6 +56,13 @@ export default function Home() {
   const { scrollY: framerScrollY } = useScroll();
   const y = useTransform(framerScrollY, [0, 300], [0, 20]);
 
+  // Track window width for responsive logic
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Scroll-based logo spinning effect (using scrollY state)
   useEffect(() => {
     const handleScroll = () => {
@@ -68,7 +77,7 @@ export default function Home() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [windowWidth]);
   // Scroll to anchor if hash is present in URL (e.g., /#contact)
   useEffect(() => {
     if (window.location.hash) {
@@ -105,14 +114,29 @@ export default function Home() {
       isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#5a5a5a]'
     } overflow-x-hidden`}>
       {/* Animated Logo: scroll-linked vertical motion, fixed after reaching top */}
-      <motion.img
-        ref={logoRef}
+      <img
         src="/images/logo.png"
-        alt="DELIA Logo"
-        className={`fixed left-4 z-50 w-28 md:w-40 lg:w-48 pointer-events-none ${isDarkMode ? 'invert' : ''}`}
+        alt="Delia Logo"
+        className="w-[90px] md:w-[130px] fixed z-50"
         style={{
-          top: isFixed ? '1rem' : `${logoY}px`,
-          transform: `rotate(${scrollY * 0.5}deg)`
+          position: 'fixed',
+          top:
+            windowWidth < 770
+              ? '1rem'
+              : scrollY < 80
+                ? `${135 - scrollY}px`
+                : '12px',
+          left:
+            windowWidth < 770
+              ? '1rem'
+              : scrollY < 80
+                ? `${135 - scrollY}px`
+                : '12px',
+          transform:
+            windowWidth < 770
+              ? `rotate(${scrollY}deg)`
+              : `rotate(${scrollY}deg)`,
+          transition: 'top 0.2s ease-out',
         }}
       />
       {/* Ambient Sound Control Bottom-Left
