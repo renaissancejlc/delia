@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 // Framer Motion modal animation variants
 const modalVariants = {
@@ -27,7 +26,11 @@ const songCovers = {
   'date night': 'date-night.jpg',
 };
 
+
+
 export default function Home() {
+  const [formStatus, setFormStatus] = useState('');
+  const [showAnimation, setShowAnimation] = useState(false);
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -394,49 +397,98 @@ export default function Home() {
         >
           <h3 className="text-[2rem] select-none">CONTACT US</h3>
           <form
-            action="mailto:madebydelia1@gmail.com"
-            method="POST"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const formElement = e.currentTarget;
+              const formData = new FormData(formElement);
+              try {
+                const response = await fetch("https://formsubmit.co/ajax/contactvadisstudio@gmail.com", {
+                  method: "POST",
+                  headers: {
+                    "Accept": "application/json"
+                  },
+                  body: formData
+                });
+
+                const data = await response.json();
+                console.log('FormSubmit response:', data);
+
+                if (response.ok) {
+                  setFormStatus('success');
+                  setShowAnimation(true);
+                  setTimeout(() => setShowAnimation(false), 5000);
+                  formElement.reset();
+                } else {
+                  setFormStatus('error');
+                }
+              } catch (error) {
+                console.error('FormSubmit error:', error);
+                setFormStatus('error');
+              }
+            }}
             className="flex flex-col gap-6 w-full max-w-full"
           >
+            <input type="text" name="_honey" style={{ display: 'none' }} />
             <input
               type="text"
               name="name"
               placeholder="NAME"
+              required
               className={`w-full max-w-full p-3 uppercase tracking-tight font-black placeholder-[#5a5a5a] ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
                   : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
               }`}
-              required
             />
             <input
               type="email"
               name="email"
               placeholder="EMAIL"
+              required
               className={`w-full max-w-full p-3 uppercase tracking-tight font-black placeholder-[#5a5a5a] ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
                   : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
               }`}
-              required
             />
             <textarea
               name="message"
               rows="5"
               placeholder="YOUR MESSAGE"
+              required
               className={`w-full max-w-full p-3 uppercase tracking-tight font-black resize-none placeholder-[#5a5a5a] ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5] text-[#f5f5f5] placeholder-[#f5f5f5]'
                   : 'bg-[#f5f5f5] border-4 border-[#5a5a5a] text-[#5a5a5a] placeholder-[#5a5a5a]'
               }`}
-              required
             />
-            <button
-              type="submit"
-              className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#bba3d4] hover:text-white transition-colors"
-            >
-              SEND MESSAGE
-            </button>
+            <div className="flex items-center gap-4 flex-wrap">
+              <button
+                type="submit"
+                className="bg-black text-white px-6 py-2 rounded uppercase tracking-wider hover:opacity-80 transition"
+              >
+                Send
+              </button>
+              {formStatus === 'success' && (
+                <div className={`px-4 py-3 border-4 uppercase tracking-tight text-center font-black ${
+                  isDarkMode
+                    ? 'bg-black text-[#f5f5f5] border-[#f5f5f5]'
+                    : 'bg-[#f6e6d9] text-[#5a5a5a] border-[#5a5a5a]'
+                }`}>
+                  MESSAGE SENT ✓ THANK YOU
+                </div>
+              )}
+              {formStatus === 'error' && (
+                <div className={`px-4 py-3 border-4 uppercase tracking-tight text-center font-black ${
+                  isDarkMode
+                    ? 'bg-red-900 text-white border-red-300'
+                    : 'bg-red-200 text-red-800 border-red-500'
+                }`}>
+                  ERROR — PLEASE TRY AGAIN
+                </div>
+              )}
+            </div>
+            
           </form>
         </motion.div>
 
