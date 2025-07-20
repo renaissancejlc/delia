@@ -331,7 +331,7 @@ export default function Home() {
         </h2>
         {/* Responsive grid for music tracks with motion and dreamy styling */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-8 md:px-16"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-10 justify-items-center"
         >
           {[
             { name: "Hell Breaks Loose", duration: "3:24" },
@@ -349,7 +349,7 @@ export default function Home() {
             return (
               <motion.div
                 key={track.title}
-                className="rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/20 backdrop-blur-md border border-white/30"
+                className="rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/20 backdrop-blur-md border border-white/30 w-full max-w-[160px]"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -365,7 +365,7 @@ export default function Home() {
                   <img
                     src={image}
                     alt={title}
-                    className="w-full object-cover aspect-square rounded-t-xl"
+                    className="w-full object-cover aspect-square rounded-t-lg max-w-[160px] mx-auto"
                   />
                   
                 </div>
