@@ -12,7 +12,7 @@
 body {
   font-family: 'Manrope', 'DM Sans', 'General Sans', sans-serif;
   /* Light mode cursor variable */
-  --cursor-color: #5a5a5a;
+  --cursor-color: #e3b300;
 }
 
 html.dark {

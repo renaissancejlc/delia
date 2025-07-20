@@ -67,6 +67,18 @@ export default function Home() {
     }
   }, [isPlaying]);
 
+  // Toggle "dark" and "light" classes on html element based on isDarkMode
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDarkMode) {
+      root.classList.add('dark');
+      root.classList.remove('light');
+    } else {
+      root.classList.add('light');
+      root.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
   return (
     <div className={`relative min-h-screen font-sans tracking-tight overflow-x-hidden ${
       isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#5a5a5a]'
