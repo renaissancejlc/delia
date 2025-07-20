@@ -656,14 +656,14 @@ export default function Home() {
         }
         /* Responsive Delia Logo sizing */
         .cd-logo {
-          max-width: 190px;
-          max-height: 190px;
+          max-width: 210px;
+          max-height: 210px;
           display: block;
         }
         @media (min-width: 1024px) {
           .cd-logo {
-            width: 190px;
-            height: 190px;
+            width: 210px;
+            height: 210px;
           }
         }
         @media (min-width: 770px) and (max-width: 1023px) {
