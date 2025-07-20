@@ -53,8 +53,10 @@ export default function Home() {
     setTimeout(() => statusBox.remove(), 5000);
   };
 
-  const { scrollY: framerScrollY } = useScroll();
+  const { scrollY: framerScrollY, scrollYProgress } = useScroll();
   const y = useTransform(framerScrollY, [0, 300], [0, 20]);
+  // Framer Motion: logo rotation based on scroll progress, slower (2 rotations)
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 720]);
 
   // Track window width for responsive logic
   useEffect(() => {
@@ -145,12 +147,12 @@ export default function Home() {
           style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
           aria-label="Scroll to top"
         >
-          <img
+          <motion.img
             src="/images/logo.png"
             alt="Delia Logo"
             className="cd-logo transition-transform duration-500 ease-out"
             style={{
-              transform: `rotate(${scrollY}deg)`,
+              rotate,
             }}
           />
         </button>
