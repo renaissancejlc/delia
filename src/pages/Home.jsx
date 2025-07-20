@@ -117,7 +117,7 @@ export default function Home() {
       <img
         src="/images/logo.png"
         alt="Delia Logo"
-        className="w-[90px] md:w-[130px] fixed z-50"
+        className={`fixed z-50 w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[140px] lg:h-[140px] xl:w-[180px] xl:h-[180px] transition-all duration-300`}
         style={{
           position: 'fixed',
           top:
