@@ -197,7 +197,7 @@ export default function Home() {
             <a
               key={idx}
               href={`${item === 'home' ? '/' : `/#${item}`}`}
-              className={`hover:bg-[#bba3d4] hover:text-white px-3 py-1 border-4 transition-all duration-150 ${
+              className={`hover:bg-[#a0c4d0] hover:text-white px-3 py-1 border-4 transition-all duration-150 ${
                 isDarkMode
                   ? 'border-[#f5f5f5] text-[#f5f5f5] bg-black'
                   : 'border-[#5a5a5a] text-[#5a5a5a] bg-[#8bae7e]'
@@ -318,7 +318,7 @@ export default function Home() {
 
         {/* Divider between YouTube and Music */}
         <div className="w-full flex justify-center py-8">
-          <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-[#bba3d4] to-transparent dark:via-[#f5f5f5]" />
+          <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-[#a0c4d0] to-transparent dark:via-[#f5f5f5]" />
         </div>
 
       {/* Featured Releases Section */}
@@ -393,7 +393,7 @@ export default function Home() {
                   >
                     <button
                       onClick={() => setSelectedTrack(null)}
-                      className="absolute top-4 right-4 z-10 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
+                      className="absolute top-4 right-4 z-10 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#a0c4d0] hover:text-white transition"
                       aria-label="Close"
                       style={{
                         borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
@@ -520,7 +520,7 @@ export default function Home() {
             <div className="flex items-center gap-4 flex-wrap">
               <button
                 type="submit"
-                className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#bba3d4] hover:text-white transition-colors"
+                className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#a0c4d0] hover:text-white transition-colors"
               >
                 SEND
               </button>
@@ -594,7 +594,7 @@ export default function Home() {
             </select>
             <button
               type="submit"
-              className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#bba3d4] hover:text-white transition-colors"
+              className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#a0c4d0] hover:text-white transition-colors"
             >
               SUBSCRIBE
             </button>
