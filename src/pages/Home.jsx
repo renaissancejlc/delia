@@ -520,9 +520,9 @@ export default function Home() {
             <div className="flex items-center gap-4 flex-wrap">
               <button
                 type="submit"
-                className="bg-[#5a5a5a] text-white px-6 py-2 rounded uppercase tracking-wider hover:opacity-80 transition"
+                className="w-full max-w-full bg-[#f6e6d9] text-[#5a5a5a] font-black uppercase tracking-tight py-3 border-4 border-[#5a5a5a] hover:bg-[#bba3d4] hover:text-white transition-colors"
               >
-                Send
+                SEND
               </button>
             </div>
           </form>
