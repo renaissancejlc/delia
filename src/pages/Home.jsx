@@ -305,32 +305,16 @@ export default function Home() {
           {selectedTrack && (
             <>
               <div
-                className={`fixed inset-0 z-40 ${
-                  isDarkMode ? 'bg-black/70' : 'bg-white/70'
-                } backdrop-blur-sm`}
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 dark:bg-black/80"
                 onClick={() => setSelectedTrack(null)}
-              />
-              <motion.div
-                className="fixed inset-0 z-50 flex items-center justify-center px-4 modal-backdrop"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
               >
                 <motion.div
-                  className={`relative bg-white p-8 rounded-xl max-w-xs sm:max-w-md w-full text-center shadow-2xl modal-content-container ${
-                    isDarkMode ? 'bg-[#232323] text-[#f5f5f5]' : 'bg-white text-[#5a5a5a]'
-                  }`}
+                  className="modal-animate relative max-w-md w-full bg-white dark:bg-[#121212] text-black dark:text-white p-6 rounded-lg shadow-lg"
                   variants={modalVariants}
                   initial="hidden"
                   animate="visible"
                   exit="exit"
                   onClick={e => e.stopPropagation()}
-                  style={{
-                    border: isDarkMode ? '4px solid #f5f5f5' : '4px solid #5a5a5a',
-                    boxShadow: isDarkMode
-                      ? '0 8px 32px 0 rgba(50,50,50,0.65)'
-                      : '0 8px 32px 0 rgba(80,80,80,0.18)',
-                  }}
                 >
                   <button
                     onClick={() => setSelectedTrack(null)}
@@ -370,7 +354,7 @@ export default function Home() {
                     </span>
                   </div>
                 </motion.div>
-              </motion.div>
+              </div>
             </>
           )}
         </AnimatePresence>

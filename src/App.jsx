@@ -1,5 +1,6 @@
 // src/App.jsx
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 
@@ -31,6 +32,14 @@ function ProtectedConfirmation() {
 }
 
 export default function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setIsDarkMode(prefersDark);
+    document.documentElement.classList.toggle('dark', prefersDark);
+  }, []);
+
   useEffect(() => {
     const cursor = document.querySelector('.cursor-circle');
 
@@ -45,7 +54,7 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <div className={isDarkMode ? 'dark' : ''}>
       <div className="cursor-circle" />
       <CartProvider>
         <Router>
@@ -56,6 +65,6 @@ export default function App() {
           </Routes>
         </Router>
       </CartProvider>
-    </>
+    </div>
   );
 }
