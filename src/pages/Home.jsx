@@ -473,7 +473,7 @@ export default function Home() {
             <div className="flex items-center gap-4 flex-wrap">
               <button
                 type="submit"
-                className="bg-black text-white px-6 py-2 rounded uppercase tracking-wider hover:opacity-80 transition"
+                className="bg-[#5a5a5a] text-white px-6 py-2 rounded uppercase tracking-wider hover:opacity-80 transition"
               >
                 Send
               </button>
