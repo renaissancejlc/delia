@@ -349,7 +349,7 @@ export default function Home() {
             return (
               <motion.div
                 key={track.title}
-                className="rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/20 backdrop-blur-md border border-white/30 w-full max-w-[160px]"
+                className="rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/20 backdrop-blur-md border border-white/30 w-full max-w-[160px] will-change-transform"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -365,7 +365,7 @@ export default function Home() {
                   <img
                     src={image}
                     alt={title}
-                    className="w-full object-cover aspect-square rounded-t-lg max-w-[160px] mx-auto"
+                    className="w-full object-cover aspect-square rounded-t-lg max-w-[160px] mx-auto transition-transform duration-300 ease-in-out will-change-transform"
                   />
                   
                 </div>
