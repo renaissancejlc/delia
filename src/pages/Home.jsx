@@ -612,10 +612,7 @@ export default function Home() {
               </form>
             </div>
           </motion.div>
-          {/* Divider between YouTube and Music */}
-        <div className="w-full flex justify-center py-8">
-          <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-[#a0c4d0] to-transparent dark:via-[#f5f5f5]" />
-        </div>
+         
         </div>
       </section>
 
