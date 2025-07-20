@@ -608,6 +608,41 @@ export default function Home() {
       {/* Background glitch radial gradient */}
       <div className="fixed inset-0 pointer-events-none z-10 bg-[radial-gradient(ellipse_at_center,_rgba(255,0,0,0.15)_0%,_transparent_70%)]" />
 
+      {/* Fixed Bottom Grass Frame */}
+      {(() => {
+        // Generate 8 random grass images, only once per render (not on every render)
+        const [grassImages, setGrassImages] = React.useState([]);
+        React.useEffect(() => {
+          const randomImages = Array.from({ length: 8 }, () =>
+            `/images/grass${Math.floor(Math.random() * 6) + 1}.png`
+          );
+          setGrassImages(randomImages);
+        }, []);
+        return (
+          <div
+            className="fixed bottom-0 left-0 w-full h-[200px] z-40 pointer-events-none overflow-hidden flex justify-center items-end"
+            style={{
+              background: "transparent",
+            }}
+          >
+            {grassImages.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`Grass ${i}`}
+                className="h-full w-auto object-cover opacity-90"
+                style={{
+                  position: 'absolute',
+                  left: `${i * 10}%`,
+                  transform: `translateX(${i * 10}%)`,
+                  bottom: -60,
+                }}
+              />
+            ))}
+          </div>
+        );
+      })()}
+
       <audio ref={audioRef} src="/audio/loop.aiff" loop preload="auto" />
 
       <style>{`
@@ -645,80 +680,80 @@ export default function Home() {
         }
       `}</style>
 
-       {/* Footer */}
-            <footer
-              className={`w-full px-4 py-8 text-center z-10 relative
+      {/* Footer */}
+      <footer
+        className={`w-full px-4 py-8 text-center z-10 relative
               ${isDarkMode ? "bg-black/80 text-gray-200" : "bg-[#a0c4d0]/80 text-[#5a5a5a]"}
               flex flex-col items-center gap-2`}
-            >
-              <div className="flex flex-row items-center justify-center gap-6 text-2xl mb-2">
-                <a
-                  href="https://instagram.com/"
-                  aria-label="Instagram"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#94b17c] transition"
-                >
-                  <FontAwesomeIcon icon={faInstagram} />
-                </a>
-                <a
-                  href="https://youtube.com/"
-                  aria-label="YouTube"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#94b17c] transition"
-                >
-                  <FontAwesomeIcon icon={faYoutube} />
-                </a>
-                <a
-                  href="https://open.spotify.com/artist/3rQGgfHdCqkfNNpJBbGAbI"
-                  aria-label="Spotify"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#94b17c] transition"
-                >
-                  <FontAwesomeIcon icon={faSpotify} />
-                </a>
-                <a
-                  href="https://tiktok.com/"
-                  aria-label="TikTok"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#94b17c] transition"
-                >
-                  <FontAwesomeIcon icon={faTiktok} />
-                </a>
-                <a
-                  href="https://music.apple.com/us/artist/delia/1691680286"
-                  aria-label="Apple Music"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#94b17c] transition"
-                >
-                  <FontAwesomeIcon icon={faApple} />
-                </a>
-                <a
-                  href="https://soundcloud.com/your-soundcloud-url"
-                  aria-label="SoundCloud"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#94b17c] transition"
-                >
-                  <FontAwesomeIcon icon={faSoundcloud} />
-                </a>
-                <a
-                  href="mailto:madebydelia1@gmail.com"
-                  aria-label="Email"
-                  className="hover:text-[#94b17c] transition"
-                >
-                  <FontAwesomeIcon icon={faEnvelope} />
-                </a>
-              </div>
-              <div className="text-xs opacity-70">
-                &copy; {new Date().getFullYear()} DELIA. All rights reserved.
-                <a href="/privacy-policy" className="ml-2 underline hover:text-[#94b17c] transition">Privacy Policy</a>
-              </div>
-            </footer>
+      >
+        <div className="flex flex-row items-center justify-center gap-6 text-2xl mb-2">
+          <a
+            href="https://instagram.com/"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#94b17c] transition"
+          >
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+          <a
+            href="https://youtube.com/"
+            aria-label="YouTube"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#94b17c] transition"
+          >
+            <FontAwesomeIcon icon={faYoutube} />
+          </a>
+          <a
+            href="https://open.spotify.com/artist/3rQGgfHdCqkfNNpJBbGAbI"
+            aria-label="Spotify"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#94b17c] transition"
+          >
+            <FontAwesomeIcon icon={faSpotify} />
+          </a>
+          <a
+            href="https://tiktok.com/"
+            aria-label="TikTok"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#94b17c] transition"
+          >
+            <FontAwesomeIcon icon={faTiktok} />
+          </a>
+          <a
+            href="https://music.apple.com/us/artist/delia/1691680286"
+            aria-label="Apple Music"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#94b17c] transition"
+          >
+            <FontAwesomeIcon icon={faApple} />
+          </a>
+          <a
+            href="https://soundcloud.com/your-soundcloud-url"
+            aria-label="SoundCloud"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#94b17c] transition"
+          >
+            <FontAwesomeIcon icon={faSoundcloud} />
+          </a>
+          <a
+            href="mailto:madebydelia1@gmail.com"
+            aria-label="Email"
+            className="hover:text-[#94b17c] transition"
+          >
+            <FontAwesomeIcon icon={faEnvelope} />
+          </a>
+        </div>
+        <div className="text-xs opacity-70">
+          &copy; {new Date().getFullYear()} DELIA. All rights reserved.
+          <a href="/privacy-policy" className="ml-2 underline hover:text-[#94b17c] transition">Privacy Policy</a>
+        </div>
+      </footer>
     </div>
   );
 }
