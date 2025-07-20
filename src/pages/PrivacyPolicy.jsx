@@ -35,12 +35,12 @@ export default function PrivacyPolicy() {
     <div className={`relative min-h-screen font-sans tracking-tight overflow-x-hidden ${
       isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#2f2f2f]'
     }`}>
-      <img
+      {/* <img
         ref={logoRef}
         src="/images/logo.png"
         alt="DELIA Logo"
         className="fixed top-20 sm:top-6 left-2 w-[100px] sm:w-[140px] md:w-[160px] z-40 opacity-100 pointer-events-none"
-      />
+      /> */}
 
       {/* Hero Section */}
       <header className={`relative z-30 border-b-4 ${
