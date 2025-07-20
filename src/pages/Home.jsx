@@ -610,10 +610,10 @@ export default function Home() {
 
       {/* Fixed Bottom Grass Frame */}
       {(() => {
-        // Generate 8 random grass images, only once per render (not on every render)
+        // Generate 20 random grass images, only once per render (not on every render)
         const [grassImages, setGrassImages] = React.useState([]);
         React.useEffect(() => {
-          const randomImages = Array.from({ length: 8 }, () =>
+          const randomImages = Array.from({ length: 20 }, () =>
             `/images/grass${Math.floor(Math.random() * 6) + 1}.png`
           );
           setGrassImages(randomImages);
@@ -633,8 +633,8 @@ export default function Home() {
                 className="h-full w-auto object-cover opacity-90"
                 style={{
                   position: 'absolute',
-                  left: `${i * 10}%`,
-                  transform: `translateX(${i * 10}%)`,
+                  left: `${(i / 20) * 100}%`,
+                  transform: `translateX(-50%)`,
                   bottom: -60,
                 }}
               />
