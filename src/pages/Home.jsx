@@ -755,7 +755,11 @@ export default function Home() {
         </div>
         <div className="text-xs opacity-70">
           &copy; {new Date().getFullYear()} DELIA. All rights reserved.
-          <a href="/privacy-policy" className="ml-2 underline hover:text-[#94b17c] transition">Privacy Policy</a>
+          <a href="/privacy-policy" className="ml-2 underline hover:text-[#94b17c] transition">Privacy Policy</a>.
+          <span className="mx-1"></span>
+          <span>
+            Site by <a href="https://vadis.studio" className="underline hover:text-[#94b17c] transition">vadis.studio</a>.
+          </span>
         </div>
         <br></br>
         <br></br>
