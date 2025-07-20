@@ -308,68 +308,75 @@ export default function Home() {
         {/* Modal */}
         <AnimatePresence>
           {selectedTrack && (
-            <motion.div
-              className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4 modal-backdrop"
-              onClick={() => setSelectedTrack(null)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
+            <>
+              <div
+                className={`fixed inset-0 z-40 ${
+                  isDarkMode ? 'bg-black/70' : 'bg-white/70'
+                } backdrop-blur-sm`}
+                onClick={() => setSelectedTrack(null)}
+              />
               <motion.div
-                className={`relative bg-white p-8 rounded-xl max-w-xs sm:max-w-md w-full text-center shadow-2xl modal-content-container ${
-                  isDarkMode ? 'bg-[#232323] text-[#f5f5f5]' : 'bg-white text-[#5a5a5a]'
-                }`}
-                variants={modalVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                onClick={e => e.stopPropagation()}
-                style={{
-                  border: isDarkMode ? '4px solid #f5f5f5' : '4px solid #5a5a5a',
-                  boxShadow: isDarkMode
-                    ? '0 8px 32px 0 rgba(50,50,50,0.65)'
-                    : '0 8px 32px 0 rgba(80,80,80,0.18)',
-                }}
+                className="fixed inset-0 z-50 flex items-center justify-center px-4 modal-backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
               >
-                <button
-                  onClick={() => setSelectedTrack(null)}
-                  className="absolute top-3 right-3 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
-                  aria-label="Close"
+                <motion.div
+                  className={`relative bg-white p-8 rounded-xl max-w-xs sm:max-w-md w-full text-center shadow-2xl modal-content-container ${
+                    isDarkMode ? 'bg-[#232323] text-[#f5f5f5]' : 'bg-white text-[#5a5a5a]'
+                  }`}
+                  variants={modalVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  onClick={e => e.stopPropagation()}
                   style={{
-                    borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                    color: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                    border: isDarkMode ? '4px solid #f5f5f5' : '4px solid #5a5a5a',
+                    boxShadow: isDarkMode
+                      ? '0 8px 32px 0 rgba(50,50,50,0.65)'
+                      : '0 8px 32px 0 rgba(80,80,80,0.18)',
                   }}
                 >
-                  ×
-                </button>
-                <h3 className="text-2xl font-black mb-4">{selectedTrack.name}</h3>
-                <img
-                  src={selectedTrack.image}
-                  alt={selectedTrack.name}
-                  className="w-full object-cover aspect-square mb-4 rounded border-2"
-                  style={{
-                    borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                  }}
-                />
-                {/* <div className="mb-4 text-base font-bold uppercase tracking-wide">
-                  Duration: <span className="font-mono">{selectedTrack.duration}</span>
-                </div> */}
-                <div className="flex justify-center gap-8 text-2xl mb-2">
-                  <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
-                    <FontAwesomeIcon icon={faSpotify} />
-                  </span>
-                  <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
-                    <FontAwesomeIcon icon={faApple} />
-                  </span>
-                  <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
-                    <FontAwesomeIcon icon={faYoutube} />
-                  </span>
-                  <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
-                    <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
-                  </span>
-                </div>
+                  <button
+                    onClick={() => setSelectedTrack(null)}
+                    className="absolute top-3 right-3 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
+                    aria-label="Close"
+                    style={{
+                      borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                      color: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                    }}
+                  >
+                    ×
+                  </button>
+                  <h3 className="text-2xl font-black mb-4">{selectedTrack.name}</h3>
+                  <img
+                    src={selectedTrack.image}
+                    alt={selectedTrack.name}
+                    className="w-full object-cover aspect-square mb-4 rounded border-2"
+                    style={{
+                      borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                    }}
+                  />
+                  {/* <div className="mb-4 text-base font-bold uppercase tracking-wide">
+                    Duration: <span className="font-mono">{selectedTrack.duration}</span>
+                  </div> */}
+                  <div className="flex justify-center gap-8 text-2xl mb-2">
+                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
+                      <FontAwesomeIcon icon={faSpotify} />
+                    </span>
+                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
+                      <FontAwesomeIcon icon={faApple} />
+                    </span>
+                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
+                      <FontAwesomeIcon icon={faYoutube} />
+                    </span>
+                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
+                      <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
+                    </span>
+                  </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
+            </>
           )}
         </AnimatePresence>
       </section>
