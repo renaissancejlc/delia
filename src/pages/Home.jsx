@@ -475,7 +475,7 @@ export default function Home() {
                     ? 'bg-black text-[#f5f5f5] border-[#f5f5f5]'
                     : 'bg-[#f6e6d9] text-[#5a5a5a] border-[#5a5a5a]'
                 }`}>
-                  MESSAGE SENT ✓ THANK YOU
+                  ✓ MESSAGE SENT. 
                 </div>
               )}
               {formStatus === 'error' && (
