@@ -42,12 +42,12 @@ export default function Home() {
   const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1024);
 
   // Floating status banner helper
-  const showStatusBanner = (message, color = 'black') => {
+  const showStatusBanner = (message, color = '[#5a5a5a]') => {
     const statusBox = document.createElement('div');
     statusBox.innerText = message;
     statusBox.className = `
       fixed top-6 right-6 z-50 border-2 border-white shadow-md px-4 py-2 text-xs font-mono tracking-widest
-      ${color === 'red' ? 'bg-red-600 text-white' : 'bg-black text-white'}
+      ${color === 'red' ? 'bg-red-600 text-white' : 'bg-[#5a5a5a] text-white'}
     `;
     document.body.appendChild(statusBox);
     setTimeout(() => statusBox.remove(), 5000);
@@ -185,7 +185,7 @@ export default function Home() {
       </button> */}
 
       {/* Fixed Rotated Text Left Side */}
-      <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-black text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
+      <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-[#5a5a5a] text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
         style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
       >
         DELIA
@@ -196,7 +196,7 @@ export default function Home() {
         className={`relative z-30 ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
       >
         {/* Nav Bar */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 pt-6 pb-4 sm:pt-8 sm:pb-6 md:pt-10 md:pb-8 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
+        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 pt-6 pb-4 sm:pt-8 sm:pb-6 md:pt-10 md:pb-8 uppercase font-[#5a5a5a] text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
           isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
         }`}>
           {[ 'music', 'mission', 'visuals'].map((item, idx) => (
@@ -224,12 +224,12 @@ export default function Home() {
           animate={{ opacity: 1, scale: 1, skewX: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="font-black uppercase text-[8rem] tracking-tighter leading-none select-none"
+          <h1 className="font-[#5a5a5a] uppercase text-[8rem] tracking-tighter leading-none select-none"
             style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
           >
             DELIA
           </h1>
-          <h2 className="mt-4 uppercase font-black text-[2rem] tracking-tight"
+          <h2 className="mt-4 uppercase font-[#5a5a5a] text-[2rem] tracking-tight"
             style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
           >
             FOR THE IN-BETWEEN MOMENTS
@@ -246,7 +246,7 @@ export default function Home() {
       {/* About Section with aggressive grid and thick borders */}
       <section
         id="mission"
-        className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
+        className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-[#5a5a5a] tracking-tight ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
       >
         <motion.h2
           initial={{ opacity: 0, x: -50, skewX: 10 }}
@@ -289,7 +289,7 @@ export default function Home() {
               animate={{ scale: 1, opacity: 1 }}
               whileHover={{ scale: 1.1, skewX: 3 }}
               transition={{ duration: 0.4 }}
-              className={`px-6 py-4 uppercase font-black text-[0.875rem] tracking-tight max-w-xs select-none ${
+              className={`px-6 py-4 uppercase font-[#5a5a5a] text-[0.875rem] tracking-tight max-w-xs select-none ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5]'
                   : 'bg-[#f5f5f5] border-4 border-[#5a5a5a]'
@@ -332,7 +332,7 @@ export default function Home() {
         id="music"
         className={`scroll-mt-28 mt-20 px-4 ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
       >
-        <h2 className="text-center text-[2.5rem] font-black uppercase mb-12">
+        <h2 className="text-center text-[2.5rem] font-[#5a5a5a] uppercase mb-12">
           <br></br>
         </h2>
         {/* Responsive grid for music tracks with motion and dreamy styling */}
@@ -382,58 +382,73 @@ export default function Home() {
         <AnimatePresence>
           {selectedTrack && (
             <>
+              {/* Modal Backdrop Overlay with blur */}
               <div
-                className={`fixed inset-0 z-50 ${isDarkMode ? 'bg-black/80' : 'bg-white/80'}`}
+                className="fixed inset-0 z-40 backdrop-blur-md bg-white/30 dark:bg-[#5a5a5a]/30"
+                onClick={() => setSelectedTrack(null)}
+              ></div>
+              {/* Modal Content */}
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center w-full h-full"
                 onClick={() => setSelectedTrack(null)}
               >
-                <div className="flex items-center justify-center w-full h-full">
-                  <motion.div
-                    className={`relative rounded-lg shadow-lg p-6 w-full max-w-md ${isDarkMode ? 'bg-[#121212] text-white' : 'bg-white text-black'}`}
-                    variants={modalVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    onClick={e => e.stopPropagation()}
+                <motion.div
+                  className={`z-50 px-6 py-4 font-bold text-sm uppercase tracking-wider shadow-lg border-4 ${
+                    isDarkMode
+                      ? 'bg-[#111] text-white border-white'
+                      : 'bg-[#f6e6d9] text-[#5a5a5a] border-[#5a5a5a]'
+                  }`}
+                  style={{ position: "relative", margin: "auto" }}
+                  variants={modalVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  onClick={e => e.stopPropagation()}
+                >
+                  <button
+                    onClick={() => setSelectedTrack(null)}
+                    className="absolute top-4 right-4 z-10 text-xl font-[#5a5a5a] border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#a0c4d0] hover:text-white transition"
+                    aria-label="Close"
+                    style={{
+                      borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                      color: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                    }}
                   >
-                    <button
-                      onClick={() => setSelectedTrack(null)}
-                      className="absolute top-4 right-4 z-10 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#a0c4d0] hover:text-white transition"
-                      aria-label="Close"
-                      style={{
-                        borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                        color: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                      }}
-                    >
-                      ×
-                    </button>
-                    <h3 className="text-2xl font-black mb-4">{selectedTrack.name}</h3>
+                    ×
+                  </button>
+                  <h3 className="text-2xl font-[#5a5a5a] mb-4">{selectedTrack.name}</h3>
+                  <div
+                    className="min-w-[16rem] min-h-[16rem] max-w-[16rem] max-h-[16rem] overflow-hidden flex items-center justify-center border-2 border-[#5a5a5a] rounded-sm mb-4"
+                    style={{
+                      borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                      backgroundColor: isDarkMode ? '#222' : '#fff',
+                    }}
+                  >
                     <img
                       src={selectedTrack.image}
                       alt={selectedTrack.name}
-                      className="w-full object-cover aspect-square mb-4 rounded border-2"
-                      style={{
-                        borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                      }}
+                      className="w-full h-full object-cover"
+                      style={{ aspectRatio: '1/1' }}
                     />
-                    {/* <div className="mb-4 text-base font-bold uppercase tracking-wide">
-                      Duration: <span className="font-mono">{selectedTrack.duration}</span>
-                    </div> */}
-                    <div className="flex justify-center gap-8 text-2xl mb-2">
-                      <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
-                        <FontAwesomeIcon icon={faSpotify} />
-                      </span>
-                      <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
-                        <FontAwesomeIcon icon={faApple} />
-                      </span>
-                      <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
-                        <FontAwesomeIcon icon={faYoutube} />
-                      </span>
-                      <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
-                        <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
-                      </span>
-                    </div>
-                  </motion.div>
-                </div>
+                  </div>
+                  {/* <div className="mb-4 text-base font-bold uppercase tracking-wide">
+                    Duration: <span className="font-mono">{selectedTrack.duration}</span>
+                  </div> */}
+                  <div className="flex justify-center gap-8 text-2xl mb-2">
+                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
+                      <FontAwesomeIcon icon={faSpotify} />
+                    </span>
+                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
+                      <FontAwesomeIcon icon={faApple} />
+                    </span>
+                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
+                      <FontAwesomeIcon icon={faYoutube} />
+                    </span>
+                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
+                      <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
+                    </span>
+                  </div>
+                </motion.div>
               </div>
             </>
           )}
@@ -447,7 +462,7 @@ export default function Home() {
       {/* Contact and Mailing List Section */}
       <section
         id="contact"
-        className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 md:px-8 py-16 flex flex-col gap-20 uppercase font-black tracking-tight overflow-x-hidden ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
+        className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 md:px-8 py-16 flex flex-col gap-20 uppercase font-[#5a5a5a] tracking-tight overflow-x-hidden ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
       >
         {/* Divider between YouTube and Music */}
         <div className="w-full flex justify-center py-8">
@@ -463,7 +478,7 @@ export default function Home() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
               <div className="text-left">
-                <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[0.95] uppercase font-black tracking-[-0.09em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
+                <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[0.95] uppercase font-[#5a5a5a] tracking-[-0.09em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
                   JOIN THE <span className="text-[#96bdcb] underline underline-offset-8 decoration-[8px]">DELIA LIST</span><br />
                   & GET UPDATES.
                 </h3>
