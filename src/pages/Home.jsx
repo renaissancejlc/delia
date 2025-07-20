@@ -167,7 +167,7 @@ export default function Home() {
         )}
       </button> */}
 
-      {/* Dark Mode Toggle Button */}
+      {/* Dark Mode Toggle Button
       <button
         onClick={() => setIsDarkMode(!isDarkMode)}
         className="fixed bottom-6 left-6 z-50 p-3 bg-[#f6e6d9] text-[#5a5a5a] rounded-sm border-2 border-[#5a5a5a] shadow-[0_0_0_2px_#5a5a5a] flex items-center justify-center"
@@ -176,7 +176,7 @@ export default function Home() {
         <span className="w-6 h-6 flex items-center justify-center">
           <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="lg" />
         </span>
-      </button>
+      </button> */}
 
       {/* Fixed Rotated Text Left Side */}
       <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-black text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
