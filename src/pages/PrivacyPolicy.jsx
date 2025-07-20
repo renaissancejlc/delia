@@ -8,10 +8,23 @@ export default function PrivacyPolicy() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const logoRef = useRef(null);
+  
 
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 300], [0, 20]);
 
+  // Scroll-based logo rotation
+    useEffect(() => {
+      const handleScroll = () => {
+        if (logoRef.current) {
+          const rotation = window.scrollY * 0.2;
+          logoRef.current.style.transform = `rotate(${rotation}deg)`;
+        }
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
   useEffect(() => {
     if (audioRef.current) {
       isPlaying ? audioRef.current.play() : audioRef.current.pause();
@@ -22,6 +35,12 @@ export default function PrivacyPolicy() {
     <div className={`relative min-h-screen font-sans tracking-tight overflow-x-hidden ${
       isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#2f2f2f]'
     }`}>
+      <img
+        ref={logoRef}
+        src="/images/logo.png"
+        alt="DELIA Logo"
+        className="fixed top-20 sm:top-6 left-2 w-[100px] sm:w-[140px] md:w-[160px] z-40 opacity-100 pointer-events-none"
+      />
 
       {/* Hero Section */}
       <header className={`relative z-30 border-b-4 ${

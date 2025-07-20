@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useScroll, useTransform, AnimatePresence } from 'framer-motion';
 // Framer Motion modal animation variants
 const modalVariants = {
   hidden: { opacity: 0, scale: 0.9 },
@@ -34,6 +35,9 @@ export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState(null);
   const logoRef = useRef(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [logoY, setLogoY] = useState(80); // initial lower position
+  const [isFixed, setIsFixed] = useState(false);
 
   // Floating status banner helper
   const showStatusBanner = (message, color = 'black') => {
@@ -47,15 +51,19 @@ export default function Home() {
     setTimeout(() => statusBox.remove(), 5000);
   };
 
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 300], [0, 20]);
+  const { scrollY: framerScrollY } = useScroll();
+  const y = useTransform(framerScrollY, [0, 300], [0, 20]);
 
-  // Scroll-based logo rotation
+  // Scroll-based logo spinning effect (using scrollY state)
   useEffect(() => {
     const handleScroll = () => {
-      if (logoRef.current) {
-        const rotation = window.scrollY * 0.2;
-        logoRef.current.style.transform = `rotate(${rotation}deg)`;
+      const scrollTop = window.scrollY;
+      setScrollY(scrollTop);
+      if (scrollTop > 80) {
+        setIsFixed(true);
+      } else {
+        setLogoY(80 - scrollTop);
+        setIsFixed(false);
       }
     };
     window.addEventListener('scroll', handleScroll);
@@ -96,11 +104,16 @@ export default function Home() {
     <div className={`relative min-h-screen font-sans tracking-tight overflow-x-hidden ${
       isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#5a5a5a]'
     } overflow-x-hidden`}>
-      <img
+      {/* Animated Logo: scroll-linked vertical motion, fixed after reaching top */}
+      <motion.img
         ref={logoRef}
         src="/images/logo.png"
         alt="DELIA Logo"
-        className="fixed top-20 sm:top-6 left-2 w-[100px] sm:w-[140px] md:w-[160px] z-40 opacity-100 pointer-events-none"
+        className={`fixed left-4 z-50 w-28 md:w-40 lg:w-48 pointer-events-none ${isDarkMode ? 'invert' : ''}`}
+        style={{
+          top: isFixed ? '1rem' : `${logoY}px`,
+          transform: `rotate(${scrollY * 0.5}deg)`
+        }}
       />
       {/* Ambient Sound Control Bottom-Left
       <button
@@ -167,7 +180,7 @@ export default function Home() {
           id="home"
           className="scroll-mt-28 max-w-7xl mx-auto px-8 pt-48 sm:pt-40 md:pt-36 pb-4 text-center"
           style={{ y }}
-          initial={{ opacity: 0, scale: 0.9, skewX: 5 }}
+          initial={{ opacity: 0, scale: 0.9, skewX: 5, y: -10 }}
           animate={{ opacity: 1, scale: 1, skewX: 0 }}
           transition={{ duration: 0.7 }}
         >
