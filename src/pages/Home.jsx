@@ -253,13 +253,11 @@ export default function Home() {
       {/* Featured Releases Section */}
       <section id="music" className="scroll-mt-28 mt-20 px-4">
         <h2 className="text-center text-[2.5rem] font-black uppercase mb-12">
-          .
+          <br></br>
         </h2>
-        {/** Responsive grid for music tracks */}
-        <div
-          className={`grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-6xl mx-auto ${
-            isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
-          }`}
+        {/* Responsive grid for music tracks with motion and dreamy styling */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-8 md:px-16"
         >
           {[
             { name: "Hell Breaks Loose", duration: "3:24" },
@@ -276,30 +274,27 @@ export default function Home() {
             const image = `/images/covers/${songCovers[title.toLowerCase()]}`;
             return (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
+                key={track.title}
+                className="rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/20 backdrop-blur-md border border-white/30"
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-                className="relative cursor-pointer group"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <div
                   onClick={() => setSelectedTrack({ ...track, image })}
-                  className={`cursor-pointer relative overflow-hidden border-4 aspect-square flex flex-col items-stretch justify-stretch ${
-                    isDarkMode ? 'border-[#f5f5f5] bg-[#232323]' : 'border-[#5a5a5a] bg-[#f5f5f5]'
-                  } group transition`}
+                  className="cursor-pointer relative flex flex-col items-stretch justify-stretch"
                   tabIndex={0}
                   role="button"
                   aria-label={`Open details for ${track.name}`}
                 >
                   <img
-                    src={`/images/covers/${songCovers[title.toLowerCase()]}`}
+                    src={image}
                     alt={title}
-                    className="w-full h-full object-cover aspect-square transition group-hover:scale-105"
-                    style={{ objectPosition: 'center' }}
+                    className="w-full object-cover aspect-square rounded-t-xl"
                   />
                   <div
-                    className={`absolute inset-0 flex flex-col items-center justify-center text-center px-2 text-lg font-black bg-black bg-opacity-60 text-white opacity-0 group-hover:opacity-100 transition`}
+                    className={`flex flex-col items-center justify-center text-center px-2 py-4 text-lg font-black`}
                   >
                     <span className="text-base sm:text-lg md:text-xl">{track.name}</span>
                     <span className="text-xs mt-1">{track.duration}</span>
@@ -308,7 +303,7 @@ export default function Home() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Modal */}
         <AnimatePresence>
