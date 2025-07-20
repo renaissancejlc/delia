@@ -129,12 +129,12 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <header className={`relative z-30 border-b-4 ${
-        isDarkMode ? 'bg-black border-[#f5f5f5]' : 'bg-[#8bae7e] border-[#5a5a5a]'
+      <header className={`relative z-30 ${
+        isDarkMode ? 'bg-black' : 'bg-[#8bae7e]'
       }`}>
         {/* Nav Bar */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 pt-6 pb-4 sm:pt-8 sm:pb-6 md:pt-10 md:pb-8 border-b-4 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
-          isDarkMode ? 'border-[#f5f5f5] text-[#f5f5f5]' : 'border-[#5a5a5a] text-[#5a5a5a]'
+        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 pt-6 pb-4 sm:pt-8 sm:pb-6 md:pt-10 md:pb-8 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
+          isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
         }`}>
           {[ 'music', 'mission', 'visuals'].map((item, idx) => (
             <a
@@ -184,7 +184,7 @@ export default function Home() {
       <section
         id="mission"
         className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
-          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] border-4 border-[#5a5a5a] bg-white'
+          isDarkMode ? 'text-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] bg-white'
         }`}
       >
         <motion.h2
@@ -250,8 +250,8 @@ export default function Home() {
         {/* YouTube Embed with no padding, background depends on dark mode */}
         <div
           id="visuals"
-          className={`scroll-mt-28 w-full max-w-4xl mx-auto border-4 ${
-            isDarkMode ? 'border-[#f5f5f5] bg-[#5a5a5a]' : 'border-[#5a5a5a] bg-[#a0c4d0]'
+          className={`scroll-mt-28 w-full max-w-4xl mx-auto ${
+            isDarkMode ? 'bg-[#5a5a5a]' : 'bg-[#a0c4d0]'
           }`}
         >
           <iframe
@@ -385,7 +385,7 @@ export default function Home() {
       <section
         id="contact"
         className={`scroll-mt-[100px] w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 md:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-12 uppercase font-black tracking-tight overflow-x-hidden ${
-          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] border-4 border-[#5a5a5a] bg-[#f5f5f5]'
+          isDarkMode ? 'text-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] bg-[#f5f5f5]'
         }`}
       >
         <motion.div
