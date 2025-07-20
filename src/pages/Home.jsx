@@ -530,6 +530,15 @@ export default function Home() {
                   <FontAwesomeIcon icon={faApple} />
                 </a>
                 <a
+                  href="https://soundcloud.com/your-soundcloud-url"
+                  aria-label="SoundCloud"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#94b17c] transition"
+                >
+                  <FontAwesomeIcon icon={faSoundcloud} />
+                </a>
+                <a
                   href="mailto:madebydelia1@gmail.com"
                   aria-label="Email"
                   className="hover:text-[#94b17c] transition"
