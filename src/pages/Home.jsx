@@ -293,12 +293,7 @@ export default function Home() {
                     alt={title}
                     className="w-full object-cover aspect-square rounded-t-xl"
                   />
-                  <div
-                    className={`flex flex-col items-center justify-center text-center px-2 py-4 text-lg font-black`}
-                  >
-                    <span className="text-base sm:text-lg md:text-xl">{track.name}</span>
-                    <span className="text-xs mt-1">{track.duration}</span>
-                  </div>
+                  
                 </div>
               </motion.div>
             );
