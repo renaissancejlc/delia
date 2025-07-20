@@ -144,7 +144,7 @@ export default function Home() {
 
         {/* About Section with aggressive grid and thick borders */}
       <section
-        id="bio"
+        id="mission"
         className={`scroll-mt-28 max-w-6xl mx-auto mt-20 px-8 py-16 grid grid-cols-12 gap-8 uppercase font-black tracking-tight ${
           isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] border-4 border-[#5a5a5a] bg-white'
         }`}
@@ -211,7 +211,7 @@ export default function Home() {
 
         {/* YouTube Embed with no padding, background depends on dark mode */}
         <div
-          id="videos"
+          id="visuals"
           className={`scroll-mt-28 w-full max-w-4xl mx-auto border-4 ${
             isDarkMode ? 'border-[#f5f5f5] bg-[#5a5a5a]' : 'border-[#5a5a5a] bg-[#a0c4d0]'
           }`}
