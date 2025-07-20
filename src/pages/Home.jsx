@@ -305,55 +305,57 @@ export default function Home() {
           {selectedTrack && (
             <>
               <div
-                className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 dark:bg-black/80"
+                className={`fixed inset-0 z-50 ${isDarkMode ? 'bg-black/80' : 'bg-white/80'}`}
                 onClick={() => setSelectedTrack(null)}
               >
-                <motion.div
-                  className="modal-animate relative max-w-md w-full bg-white dark:bg-[#121212] text-black dark:text-white p-6 rounded-lg shadow-lg"
-                  variants={modalVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  onClick={e => e.stopPropagation()}
-                >
-                  <button
-                    onClick={() => setSelectedTrack(null)}
-                    className="absolute top-3 right-3 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
-                    aria-label="Close"
-                    style={{
-                      borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                      color: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                    }}
+                <div className="flex items-center justify-center w-full h-full">
+                  <motion.div
+                    className={`rounded-lg shadow-lg p-6 w-full max-w-md ${isDarkMode ? 'bg-[#121212] text-white' : 'bg-white text-black'}`}
+                    variants={modalVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    onClick={e => e.stopPropagation()}
                   >
-                    ×
-                  </button>
-                  <h3 className="text-2xl font-black mb-4">{selectedTrack.name}</h3>
-                  <img
-                    src={selectedTrack.image}
-                    alt={selectedTrack.name}
-                    className="w-full object-cover aspect-square mb-4 rounded border-2"
-                    style={{
-                      borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                    }}
-                  />
-                  {/* <div className="mb-4 text-base font-bold uppercase tracking-wide">
-                    Duration: <span className="font-mono">{selectedTrack.duration}</span>
-                  </div> */}
-                  <div className="flex justify-center gap-8 text-2xl mb-2">
-                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
-                      <FontAwesomeIcon icon={faSpotify} />
-                    </span>
-                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
-                      <FontAwesomeIcon icon={faApple} />
-                    </span>
-                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
-                      <FontAwesomeIcon icon={faYoutube} />
-                    </span>
-                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
-                      <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
-                    </span>
-                  </div>
-                </motion.div>
+                    <button
+                      onClick={() => setSelectedTrack(null)}
+                      className="absolute top-3 right-3 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
+                      aria-label="Close"
+                      style={{
+                        borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                        color: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                      }}
+                    >
+                      ×
+                    </button>
+                    <h3 className="text-2xl font-black mb-4">{selectedTrack.name}</h3>
+                    <img
+                      src={selectedTrack.image}
+                      alt={selectedTrack.name}
+                      className="w-full object-cover aspect-square mb-4 rounded border-2"
+                      style={{
+                        borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                      }}
+                    />
+                    {/* <div className="mb-4 text-base font-bold uppercase tracking-wide">
+                      Duration: <span className="font-mono">{selectedTrack.duration}</span>
+                    </div> */}
+                    <div className="flex justify-center gap-8 text-2xl mb-2">
+                      <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
+                        <FontAwesomeIcon icon={faSpotify} />
+                      </span>
+                      <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
+                        <FontAwesomeIcon icon={faApple} />
+                      </span>
+                      <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
+                        <FontAwesomeIcon icon={faYoutube} />
+                      </span>
+                      <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
+                        <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
+                      </span>
+                    </div>
+                  </motion.div>
+                </div>
               </div>
             </>
           )}
