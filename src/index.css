@@ -11,6 +11,13 @@
 
 body {
   font-family: 'Manrope', 'DM Sans', 'General Sans', sans-serif;
+  /* Light mode cursor variable */
+  --cursor-color: #5a5a5a;
+}
+
+html.dark {
+  /* Dark mode cursor variable */
+  --cursor-color: rgba(255, 255, 255, 0.8);
 }
 
 h1, h2, h3 {
@@ -33,7 +40,7 @@ body {
   transform: rotate(var(--scroll-rotation));
 }
 
-/* html, body {
+html, body {
   cursor: none;
 }
 
@@ -41,21 +48,16 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 32px;
-  height: 32px;
-  background: radial-gradient(circle at center, #fffacd, #fce047, #fbb040);
+  width: 20px;
+  height: 20px;
+  background-color: var(--cursor-color);
   border-radius: 50%;
   pointer-events: none;
   transform: translate3d(-50%, -50%, 0);
   z-index: 9999;
-  mix-blend-mode: screen;
   transition: transform 0.05s ease-out;
-  box-shadow:
-    0 0 10px 4px rgba(255, 240, 100, 0.6),
-    0 0 20px 8px rgba(255, 220, 50, 0.4),
-    0 0 30px 12px rgba(255, 200, 0, 0.2);
-  backdrop-filter: blur(2px);
-} */
+  box-shadow: 0 0 4px var(--cursor-color);
+}
 
 /* Site title font override */
 .site-title {
