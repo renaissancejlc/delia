@@ -133,7 +133,7 @@ export default function PrivacyPolicy() {
       </div>
 
       {/* Main Privacy Policy Content */}
-      <section className={`scroll-mt-[100px] w-full max-w-4xl mx-auto mt-40 px-8 py-16 font-sans tracking-tight text-center ${
+      <section className={`scroll-mt-[100px] w-full max-w-4xl mx-auto mt-24 px-8 py-16 font-sans tracking-tight text-center ${
         isDarkMode ? 'text-[#f5f5f5] border-4  bg-[#3b3b3b]' : 'text-[#5a5a5a]'
       }`}>
         <h1 className="text-4xl font-[#5a5a5a] uppercase mb-8 text-center">Privacy Policy</h1>
@@ -163,6 +163,40 @@ export default function PrivacyPolicy() {
 
       {/* Background glitch radial gradient */}
       <div className="fixed inset-0 pointer-events-none z-10 bg-[radial-gradient(ellipse_at_center,_rgba(255,0,0,0.15)_0%,_transparent_70%)]" />
+
+      {/* Fixed Bottom Grass Frame */}
+      {(() => {
+        const [grassImages, setGrassImages] = React.useState([]);
+        React.useEffect(() => {
+          const randomImages = Array.from({ length: 20 }, () =>
+            `/images/grass${Math.floor(Math.random() * 6) + 1}.png`
+          );
+          setGrassImages(randomImages);
+        }, []);
+        return (
+          <div
+            className="fixed bottom-0 left-0 w-full h-[200px] z-40 pointer-events-none overflow-hidden flex justify-center items-end"
+            style={{
+              background: "transparent",
+            }}
+          >
+            {grassImages.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`Grass ${i}`}
+                className="h-full w-auto object-cover opacity-90"
+                style={{
+                  position: 'absolute',
+                  left: `${(i / 20) * 100}%`,
+                  transform: `translateX(-50%)`,
+                  bottom: -60,
+                }}
+              />
+            ))}
+          </div>
+        );
+      })()}
 
       <audio ref={audioRef} src="/audio/loop.aiff" loop preload="auto" />
 
@@ -278,7 +312,9 @@ export default function PrivacyPolicy() {
                   Site by <a href="https://vadis.studio" className="underline hover:text-[#94b17c] transition">vadis.studio</a>
                 </span>
               </div>
-              
+              <br></br>
+              <br></br>
+              <br></br>
             </footer>
     </div>
   );
