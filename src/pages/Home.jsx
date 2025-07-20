@@ -335,9 +335,9 @@ export default function Home() {
         <h2 className="text-center text-[2.5rem] font-[#5a5a5a] uppercase mb-12">
           <br></br>
         </h2>
-        {/* Responsive grid for music tracks with motion and dreamy styling */}
+        {/* Responsive grid for music tracks with brutalist frames and hover overlays */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-10 justify-items-center"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[1fr]"
         >
           {[
             { name: "Hell Breaks Loose", duration: "3:24" },
@@ -353,27 +353,24 @@ export default function Home() {
             const title = track.name;
             const image = `/images/covers/${songCovers[title.toLowerCase()]}`;
             return (
-              <motion.div
-                key={track.title}
-                layout
-                whileHover={{ scale: 1.03 }}
-                className="rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/20 backdrop-blur-md border border-white/30 w-full max-w-[160px]"
+              <div
+                key={track.name}
+                className="relative border-2 border-[#1e1e1e] rounded-sm overflow-hidden group bg-white"
+                onClick={() => setSelectedTrack({ ...track, image })}
+                tabIndex={0}
+                role="button"
+                aria-label={`Open details for ${track.name}`}
+                style={{ cursor: "pointer" }}
               >
-                <div
-                  onClick={() => setSelectedTrack({ ...track, image })}
-                  className="cursor-pointer relative flex flex-col items-stretch justify-stretch"
-                  tabIndex={0}
-                  role="button"
-                  aria-label={`Open details for ${track.name}`}
-                >
-                  <img
-                    src={image}
-                    alt={title}
-                    className="w-full object-cover aspect-square rounded-t-lg max-w-[160px] mx-auto transition-transform duration-300 ease-in-out"
-                  />
-                  
+                <img
+                  src={image}
+                  alt={title}
+                  className="w-full h-full object-cover aspect-square transition-all duration-200 group-hover:scale-[1.02] group-hover:brightness-110"
+                />
+                <div className="absolute bottom-0 left-0 w-full bg-black/70 text-white text-[0.65rem] px-2 py-1 font-mono tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  {track.name}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </motion.div>
@@ -418,7 +415,7 @@ export default function Home() {
                   </button>
                   <h3 className="text-2xl font-[#5a5a5a] mb-4">{selectedTrack.name}</h3>
                   <div
-                    className="min-w-[16rem] min-h-[16rem] max-w-[16rem] max-h-[16rem] overflow-hidden flex items-center justify-center border-2 border-[#5a5a5a] rounded-sm mb-4"
+                    className="min-w-[26rem] min-h-[26rem] max-w-[26rem] max-h-[26rem] overflow-hidden flex items-center justify-center border-2 border-[#5a5a5a] rounded-sm mb-4"
                     style={{
                       borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
                       backgroundColor: isDarkMode ? '#222' : '#fff',
