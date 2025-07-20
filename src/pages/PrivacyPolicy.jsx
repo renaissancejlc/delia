@@ -33,8 +33,38 @@ export default function PrivacyPolicy() {
 
   return (
     <div className={`relative min-h-screen font-sans tracking-tight overflow-x-hidden ${
-      isDarkMode ? 'bg-black text-[#f5f5f5]' : 'bg-[#a0c4d0] text-[#2f2f2f]'
+      isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
     }`}>
+      <div className={`absolute inset-0 -z-10 bg-gradient-to-b ${
+        isDarkMode
+          ? 'from-black via-[#1a1a1a] to-[#330000]'
+          : 'from-[#8bae7e] via-[#a0c4d0] to-[#dce7dd]'
+      }`} />
+
+      {/* Rotating clickable disc logo */}
+      <div
+        className="logo-container fixed z-50"
+        style={{
+          position: 'fixed',
+          top: '3.5rem',
+          left: '1rem',
+          transition: 'top 0.2s ease-out',
+        }}
+      >
+        <a
+          href="/"
+          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+          aria-label="Go to homepage"
+        >
+          <img
+            ref={logoRef}
+            src="/images/logo.png"
+            alt="Delia Logo"
+            className="cd-logo transition-transform duration-500 ease-out"
+          />
+        </a>
+      </div>
+
       {/* <img
         ref={logoRef}
         src="/images/logo.png"
@@ -44,17 +74,17 @@ export default function PrivacyPolicy() {
 
       {/* Hero Section */}
       <header className={`relative z-30 border-b-4 ${
-        isDarkMode ? 'bg-black border-[#f5f5f5]' : 'bg-[#8bae7e] border-[#2f2f2f]'
+        isDarkMode ? 'bg-black border-[#f5f5f5]' : 'bg-[#5a5a5a] border-[#2f2f2f]'
       }`}>
         {/* Nav Bar */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 pt-6 pb-4 sm:pt-8 sm:pb-6 md:pt-10 md:pb-8 uppercase font-black text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
+        <nav className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-wrap justify-center gap-4 pt-6 pb-4 sm:pt-8 sm:pb-6 md:pt-10 md:pb-8 uppercase font-[#5a5a5a] text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] tracking-tighter ${
           isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
         }`}>
           {[ 'music', 'mission', 'visuals'].map((item, idx) => (
             <a
               key={idx}
               href={`${item === 'home' ? '/' : `/#${item}`}`}
-              className={`hover:bg-[#bba3d4] hover:text-white px-3 py-1 border-4 transition-all duration-150 ${
+              className={`hover:bg-[#a0c4d0] hover:text-white px-3 py-1 border-4 transition-all duration-150 ${
                 isDarkMode
                   ? 'border-[#f5f5f5] text-[#f5f5f5] bg-black'
                   : 'border-[#5a5a5a] text-[#5a5a5a] bg-[#8bae7e]'
@@ -84,7 +114,7 @@ export default function PrivacyPolicy() {
           </svg>
         )}
       </button> */}
-{/* Dark Mode Toggle Button */}
+{/* Dark Mode Toggle Button
       <button
         onClick={() => setIsDarkMode(!isDarkMode)}
         className="fixed bottom-6 left-6 z-50 p-3 bg-[#f6e6d9] text-[#5a5a5a] rounded-sm border-2 border-[#5a5a5a] shadow-[0_0_0_2px_#5a5a5a] flex items-center justify-center"
@@ -93,20 +123,20 @@ export default function PrivacyPolicy() {
         <span className="w-6 h-6 flex items-center justify-center">
           <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="lg" />
         </span>
-      </button>
+      </button> */}
 
       {/* Fixed Rotated Text Left Side */}
-      <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-black text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
+      <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-[#5a5a5a] text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
         style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
       >
         DELIA
       </div>
 
       {/* Main Privacy Policy Content */}
-      <section className={`scroll-mt-[100px] w-full max-w-4xl mx-auto mt-40 px-8 py-16 font-sans tracking-tight ${
-        isDarkMode ? 'text-[#f5f5f5] border-4  bg-[#3b3b3b]' : 'text-[#2f2f2f] border-4  bg-[#f5f5f5]'
+      <section className={`scroll-mt-[100px] w-full max-w-4xl mx-auto mt-40 px-8 py-16 font-sans tracking-tight text-center ${
+        isDarkMode ? 'text-[#f5f5f5] border-4  bg-[#3b3b3b]' : 'text-[#5a5a5a]'
       }`}>
-        <h1 className="text-4xl font-black uppercase mb-8 text-center">Privacy Policy</h1>
+        <h1 className="text-4xl font-[#5a5a5a] uppercase mb-8 text-center">Privacy Policy</h1>
         <p className="mb-6">
           At DELIA, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you visit our site or interact with our services.
         </p>
@@ -145,12 +175,36 @@ export default function PrivacyPolicy() {
         .grainy-motion {
           animation: floatGrain 12s ease-in-out infinite;
         }
+
+        .cd-logo {
+          max-width: 210px;
+          max-height: 210px;
+          display: block;
+        }
+        @media (min-width: 1024px) {
+          .cd-logo {
+            width: 210px;
+            height: 210px;
+          }
+        }
+        @media (min-width: 770px) and (max-width: 1023px) {
+          .cd-logo {
+            width: 120px;
+            height: 120px;
+          }
+        }
+        @media (max-width: 769px) {
+          .cd-logo {
+            width: 80px;
+            height: 80px;
+          }
+        }
       `}</style>
 
        {/* Footer */}
             <footer
               className={`w-full px-4 py-8 text-center z-10 relative
-              ${isDarkMode ? "bg-black/80 text-gray-200" : "bg-[#a0c4d0]/80 text-[#2f2f2f]"}
+              ${isDarkMode ? "bg-black/80 text-gray-200" : "bg-[#a0c4d0]/80 text-[#5a5a5a]"}
               flex flex-col items-center gap-2`}
             >
               <div className="flex flex-row items-center justify-center gap-6 text-2xl mb-2">
@@ -219,6 +273,10 @@ export default function PrivacyPolicy() {
               <div className="text-xs opacity-70">
                 &copy; {new Date().getFullYear()} DELIA. All rights reserved.
                 <a href="/privacy-policy" className="ml-2 underline hover:text-[#94b17c] transition">Privacy Policy</a>
+                <span className="mx-2">|</span>
+                <span>
+                  Site by <a href="https://vadis.studio" className="underline hover:text-[#94b17c] transition">vadis.studio</a>
+                </span>
               </div>
               
             </footer>
