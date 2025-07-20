@@ -1,9 +1,31 @@
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+// Framer Motion modal animation variants
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+  },
+  exit: { opacity: 0, scale: 0.9, transition: { duration: 0.3 } }
+};
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faYoutube, faSpotify, faTiktok, faApple, faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 import { faSun, faMoon, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
+const songCovers = {
+  'hell breaks loose': 'hell-breaks-loose.jpeg',
+  'you & me': 'you-&-me.jpg',
+  'reach for the stars': 'reach-for-the-stars.jpeg',
+  'celebration': 'celebration.jpeg',
+  'dead roses': 'dead-roses.jpg',
+  'smooth criminal': 'smooth-criminal.png',
+  'let me talk': 'let-me-talk.jpg',
+  'body high': 'body-high.png',
+  'date night': 'date-night.jpg',
+};
 
 export default function Home() {
   const audioRef = useRef(null);
@@ -231,7 +253,7 @@ export default function Home() {
       {/* Featured Releases Section */}
       <section id="music" className="scroll-mt-28 mt-20 px-4">
         <h2 className="text-center text-[2.5rem] font-black uppercase mb-12">
-          Music
+          .
         </h2>
         {/** Responsive grid for music tracks */}
         <div
@@ -249,97 +271,113 @@ export default function Home() {
             { name: "Let Me Talk", duration: "2:39" },
             { name: "Body High", duration: "2:36" },
             { name: "Date Night", duration: "3:09" }
-          ].map((track, idx) => {
-            // Format name for file: lowercase, spaces to dashes
-            const formattedName = track.name.toLowerCase().replace(/\s+/g, '-');
-            const image = `/images/covers/${formattedName}.png`;
+          ].map((track, index) => {
+            const title = track.name;
+            const image = `/images/covers/${songCovers[title.toLowerCase()]}`;
             return (
-              <div
-                key={track.name}
-                onClick={() => setSelectedTrack({ ...track, image })}
-                className={`cursor-pointer relative overflow-hidden border-4 aspect-square flex flex-col items-stretch justify-stretch ${
-                  isDarkMode ? 'border-[#f5f5f5] bg-[#232323]' : 'border-[#5a5a5a] bg-[#f5f5f5]'
-                } group transition`}
-                tabIndex={0}
-                role="button"
-                aria-label={`Open details for ${track.name}`}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                className="relative cursor-pointer group"
               >
-                <img
-                  src={image}
-                  alt={track.name}
-                  className="w-full h-full object-cover aspect-square transition group-hover:scale-105"
-                  style={{ objectPosition: 'center' }}
-                />
                 <div
-                  className={`absolute inset-0 flex flex-col items-center justify-center text-center px-2 text-lg font-black bg-black bg-opacity-60 text-white opacity-0 group-hover:opacity-100 transition`}
+                  onClick={() => setSelectedTrack({ ...track, image })}
+                  className={`cursor-pointer relative overflow-hidden border-4 aspect-square flex flex-col items-stretch justify-stretch ${
+                    isDarkMode ? 'border-[#f5f5f5] bg-[#232323]' : 'border-[#5a5a5a] bg-[#f5f5f5]'
+                  } group transition`}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Open details for ${track.name}`}
                 >
-                  <span className="text-base sm:text-lg md:text-xl">{track.name}</span>
-                  <span className="text-xs mt-1">{track.duration}</span>
+                  <img
+                    src={`/images/covers/${songCovers[title.toLowerCase()]}`}
+                    alt={title}
+                    className="w-full h-full object-cover aspect-square transition group-hover:scale-105"
+                    style={{ objectPosition: 'center' }}
+                  />
+                  <div
+                    className={`absolute inset-0 flex flex-col items-center justify-center text-center px-2 text-lg font-black bg-black bg-opacity-60 text-white opacity-0 group-hover:opacity-100 transition`}
+                  >
+                    <span className="text-base sm:text-lg md:text-xl">{track.name}</span>
+                    <span className="text-xs mt-1">{track.duration}</span>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Modal */}
-        {selectedTrack && (
-          <div
-            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4"
-            onClick={() => setSelectedTrack(null)}
-          >
-            <div
-              className={`relative bg-white p-8 rounded-xl max-w-xs sm:max-w-md w-full text-center shadow-2xl ${
-                isDarkMode ? 'bg-[#232323] text-[#f5f5f5]' : 'bg-white text-[#5a5a5a]'
-              }`}
-              onClick={e => e.stopPropagation()}
-              style={{
-                border: isDarkMode ? '4px solid #f5f5f5' : '4px solid #5a5a5a',
-                boxShadow: isDarkMode
-                  ? '0 8px 32px 0 rgba(50,50,50,0.65)'
-                  : '0 8px 32px 0 rgba(80,80,80,0.18)',
-              }}
+        <AnimatePresence>
+          {selectedTrack && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm`}
+              onClick={() => setSelectedTrack(null)}
             >
-              <button
-                onClick={() => setSelectedTrack(null)}
-                className="absolute top-3 right-3 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
-                aria-label="Close"
+              <motion.div
+                className={`relative bg-white p-8 rounded-xl max-w-xs sm:max-w-md w-full text-center shadow-2xl modal-content-container ${
+                  isDarkMode ? 'bg-[#232323] text-[#f5f5f5]' : 'bg-white text-[#5a5a5a]'
+                }`}
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                onClick={e => e.stopPropagation()}
                 style={{
-                  borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                  color: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                  border: isDarkMode ? '4px solid #f5f5f5' : '4px solid #5a5a5a',
+                  boxShadow: isDarkMode
+                    ? '0 8px 32px 0 rgba(50,50,50,0.65)'
+                    : '0 8px 32px 0 rgba(80,80,80,0.18)',
                 }}
               >
-                ×
-              </button>
-              <h3 className="text-2xl font-black mb-4">{selectedTrack.name}</h3>
-              <img
-                src={selectedTrack.image}
-                alt={selectedTrack.name}
-                className="w-full object-cover aspect-square mb-4 rounded border-2"
-                style={{
-                  borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
-                }}
-              />
-              {/* <div className="mb-4 text-base font-bold uppercase tracking-wide">
-                Duration: <span className="font-mono">{selectedTrack.duration}</span>
-              </div> */}
-              <div className="flex justify-center gap-8 text-2xl mb-2">
-                <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
-                  <FontAwesomeIcon icon={faSpotify} />
-                </span>
-                <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
-                  <FontAwesomeIcon icon={faApple} />
-                </span>
-                <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
-                  <FontAwesomeIcon icon={faYoutube} />
-                </span>
-                <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
-                  <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
-                </span>
-              </div>
-
-            </div>
-          </div>
-        )}
+                <button
+                  onClick={() => setSelectedTrack(null)}
+                  className="absolute top-3 right-3 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
+                  aria-label="Close"
+                  style={{
+                    borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                    color: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                  }}
+                >
+                  ×
+                </button>
+                <h3 className="text-2xl font-black mb-4">{selectedTrack.name}</h3>
+                <img
+                  src={selectedTrack.image}
+                  alt={selectedTrack.name}
+                  className="w-full object-cover aspect-square mb-4 rounded border-2"
+                  style={{
+                    borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                  }}
+                />
+                {/* <div className="mb-4 text-base font-bold uppercase tracking-wide">
+                  Duration: <span className="font-mono">{selectedTrack.duration}</span>
+                </div> */}
+                <div className="flex justify-center gap-8 text-2xl mb-2">
+                  <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
+                    <FontAwesomeIcon icon={faSpotify} />
+                  </span>
+                  <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
+                    <FontAwesomeIcon icon={faApple} />
+                  </span>
+                  <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
+                    <FontAwesomeIcon icon={faYoutube} />
+                  </span>
+                  <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
+                    <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
+                  </span>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
 
