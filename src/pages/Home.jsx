@@ -2,13 +2,14 @@ import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faYoutube, faSpotify, faTiktok, faApple } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faYoutube, faSpotify, faTiktok, faApple, faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 import { faSun, faMoon, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [selectedTrack, setSelectedTrack] = useState(null);
   const logoRef = useRef(null);
 
   const { scrollY } = useScroll();
@@ -227,67 +228,118 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Listen and Follow Sections with grid and stark styling */}
+      {/* Featured Releases Section */}
       <section id="music" className="scroll-mt-28 mt-20 px-4">
-        <div className={`overflow-x-auto max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 uppercase font-black tracking-tight max-w-6xl ${
-          isDarkMode ? 'text-[#f5f5f5] border-4 border-[#f5f5f5] bg-[#3b3b3b]' : 'text-[#5a5a5a] border-4 border-[#5a5a5a] bg-[#f5f5f5]'
-        }`}>
-        <div className={`p-8 flex flex-col gap-6 border-4 ${
-          isDarkMode ? 'border-[#f5f5f5]' : 'border-[#5a5a5a]'
-        }`}>
-          <p className="text-[1.5rem] tracking-tighter select-none">LISTEN ON:</p>
-          <div className={`flex gap-8 text-[1.25rem] ${
+        <h2 className="text-center text-[2.5rem] font-black uppercase mb-12">
+          Music
+        </h2>
+        {/** Responsive grid for music tracks */}
+        <div
+          className={`grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-6xl mx-auto ${
             isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
-          }`}>
-            {['https://spotify.com', 'https://music.apple.com'].map((href, idx) => (
-              <motion.a
-                key={idx}
-                href={href}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-3 hover:text-[#bba3d4] transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
+          }`}
+        >
+          {[
+            { name: "Hell Breaks Loose", duration: "3:24" },
+            { name: "You & Me", duration: "3:25" },
+            { name: "Reach for the Stars", duration: "3:10" },
+            { name: "Celebration", duration: "3:05" },
+            { name: "Dead Roses", duration: "3:22" },
+            { name: "Smooth Criminal", duration: "3:05" },
+            { name: "Let Me Talk", duration: "2:39" },
+            { name: "Body High", duration: "2:36" },
+            { name: "Date Night", duration: "3:09" }
+          ].map((track, idx) => {
+            // Format name for file: lowercase, spaces to dashes
+            const formattedName = track.name.toLowerCase().replace(/\s+/g, '-');
+            const image = `/images/covers/${formattedName}.png`;
+            return (
+              <div
+                key={track.name}
+                onClick={() => setSelectedTrack({ ...track, image })}
+                className={`cursor-pointer relative overflow-hidden border-4 aspect-square flex flex-col items-stretch justify-stretch ${
+                  isDarkMode ? 'border-[#f5f5f5] bg-[#232323]' : 'border-[#5a5a5a] bg-[#f5f5f5]'
+                } group transition`}
+                tabIndex={0}
+                role="button"
+                aria-label={`Open details for ${track.name}`}
               >
-                <FontAwesomeIcon icon={idx === 0 ? faSpotify : faApple} size="lg" />
-                {idx === 0 ? 'Spotify' : 'Apple Music'}
-              </motion.a>
-            ))}
-          </div>
+                <img
+                  src={image}
+                  alt={track.name}
+                  className="w-full h-full object-cover aspect-square transition group-hover:scale-105"
+                  style={{ objectPosition: 'center' }}
+                />
+                <div
+                  className={`absolute inset-0 flex flex-col items-center justify-center text-center px-2 text-lg font-black bg-black bg-opacity-60 text-white opacity-0 group-hover:opacity-100 transition`}
+                >
+                  <span className="text-base sm:text-lg md:text-xl">{track.name}</span>
+                  <span className="text-xs mt-1">{track.duration}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        <div className={`p-8 flex flex-col gap-6 border-4 ${
-          isDarkMode ? 'border-[#f5f5f5]' : 'border-[#5a5a5a]'
-        }`}>
-          <p className="text-[1.5rem] tracking-tighter select-none">FOLLOW:</p>
-          <div className={`flex gap-8 text-[1.25rem] ${
-            isDarkMode ? 'text-[#f5f5f5]' : 'text-[#5a5a5a]'
-          }`}>
-            {[
-              { href: 'https://instagram.com', icon: faInstagram },
-              { href: 'https://tiktok.com', icon: faTiktok },
-              { href: 'https://youtube.com', icon: faYoutube },
-              { href: 'mailto:madebydelia1@gmail.com', icon: faEnvelope },
-            ].map(({ href, icon }, idx) => (
-              <motion.a
-                key={idx}
-                href={href}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-3 hover:text-[#bba3d4] transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
+        {/* Modal */}
+        {selectedTrack && (
+          <div
+            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4"
+            onClick={() => setSelectedTrack(null)}
+          >
+            <div
+              className={`relative bg-white p-8 rounded-xl max-w-xs sm:max-w-md w-full text-center shadow-2xl ${
+                isDarkMode ? 'bg-[#232323] text-[#f5f5f5]' : 'bg-white text-[#5a5a5a]'
+              }`}
+              onClick={e => e.stopPropagation()}
+              style={{
+                border: isDarkMode ? '4px solid #f5f5f5' : '4px solid #5a5a5a',
+                boxShadow: isDarkMode
+                  ? '0 8px 32px 0 rgba(50,50,50,0.65)'
+                  : '0 8px 32px 0 rgba(80,80,80,0.18)',
+              }}
+            >
+              <button
+                onClick={() => setSelectedTrack(null)}
+                className="absolute top-3 right-3 text-xl font-black border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#bba3d4] hover:text-white transition"
+                aria-label="Close"
+                style={{
+                  borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                  color: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                }}
               >
-                <FontAwesomeIcon icon={icon} size="lg" /> 
-              </motion.a>
-            ))}
+                ×
+              </button>
+              <h3 className="text-2xl font-black mb-4">{selectedTrack.name}</h3>
+              <img
+                src={selectedTrack.image}
+                alt={selectedTrack.name}
+                className="w-full object-cover aspect-square mb-4 rounded border-2"
+                style={{
+                  borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
+                }}
+              />
+              {/* <div className="mb-4 text-base font-bold uppercase tracking-wide">
+                Duration: <span className="font-mono">{selectedTrack.duration}</span>
+              </div> */}
+              <div className="flex justify-center gap-8 text-2xl mb-2">
+                <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
+                  <FontAwesomeIcon icon={faSpotify} />
+                </span>
+                <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
+                  <FontAwesomeIcon icon={faApple} />
+                </span>
+                <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
+                  <FontAwesomeIcon icon={faYoutube} />
+                </span>
+                <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
+                  <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
+                </span>
+              </div>
+
+            </div>
           </div>
-        </div>
-        </div>
+        )}
       </section>
 
 
