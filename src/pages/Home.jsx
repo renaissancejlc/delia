@@ -753,6 +753,9 @@ export default function Home() {
           &copy; {new Date().getFullYear()} DELIA. All rights reserved.
           <a href="/privacy-policy" className="ml-2 underline hover:text-[#94b17c] transition">Privacy Policy</a>
         </div>
+        <br></br>
+        <br></br>
+        <br></br>
       </footer>
     </div>
   );
