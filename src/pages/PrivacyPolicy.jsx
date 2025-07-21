@@ -125,12 +125,12 @@ export default function PrivacyPolicy() {
         </span>
       </button> */}
 
-      {/* Fixed Rotated Text Left Side */}
+      {/* Fixed Rotated Text Left Side
       <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-[#5a5a5a] text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
         style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
       >
         DELIA
-      </div>
+      </div> */}
 
       {/* Main Privacy Policy Content */}
       <section className={`scroll-mt-[100px] w-full max-w-4xl mx-auto mt-24 px-8 py-16 font-sans tracking-tight text-center ${
@@ -168,10 +168,14 @@ export default function PrivacyPolicy() {
       {(() => {
         const [grassImages, setGrassImages] = React.useState([]);
         React.useEffect(() => {
-          const randomImages = Array.from({ length: 20 }, () =>
-            `/images/grass${Math.floor(Math.random() * 6) + 1}.png`
-          );
-          setGrassImages(randomImages);
+          if (typeof window !== 'undefined') {
+            const isMobile = window.innerWidth <= 768;
+            const grassCount = isMobile ? 4 : 20;
+            const randomImages = Array.from({ length: grassCount }, () =>
+              `/images/grass${Math.floor(Math.random() * 6) + 1}.png`
+            );
+            setGrassImages(randomImages);
+          }
         }, []);
         return (
           <div
@@ -188,7 +192,7 @@ export default function PrivacyPolicy() {
                 className="h-full w-auto object-cover opacity-90"
                 style={{
                   position: 'absolute',
-                  left: `${(i / 20) * 100}%`,
+                  left: `${(i / grassImages.length) * 100}%`,
                   transform: `translateX(-50%)`,
                   bottom: -60,
                 }}
