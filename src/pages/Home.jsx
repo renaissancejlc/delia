@@ -295,7 +295,7 @@ export default function Home() {
               className={`px-6 py-4 uppercase font-[#5a5a5a] text-[0.875rem] tracking-tight max-w-xs select-none ${
                 isDarkMode
                   ? 'bg-[#3b3b3b] border-4 border-[#f5f5f5]'
-                  : 'bg-[#f5f5f5] border-4 border-[#5a5a5a]'
+                  : 'bg-[#d3d3d3] border-4 border-[#5a5a5a]'
               }`}
               style={{
                 clipPath:
@@ -325,16 +325,21 @@ export default function Home() {
           />
         </div>
 
-        {/* Divider between YouTube and Music
-        <div className="w-full flex justify-center py-8">
-          <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-[#a0c4d0] to-transparent dark:via-[#f5f5f5]" />
-        </div> */}
+    
 
       {/* Featured Releases Section */}
       <section
         id="music"
         className={`scroll-mt-28 mt-20 px-4 ${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}
       >
+        {/* Divider between YouTube and Music */}
+      <div className="w-full flex justify-center items-center py-8">
+        <div className="flex gap-3 text-2xl sm:text-3xl text-[#d3d3d3] tracking-widest">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <span key={i}>★</span>
+          ))}
+        </div>
+      </div>
         <h2 className="text-center text-[2.5rem] font-[#5a5a5a] uppercase mb-12">
           <br></br>
         </h2>
