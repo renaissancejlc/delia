@@ -417,7 +417,7 @@ export default function Home() {
                   </button>
                   <h3 className="text-2xl font-[#5a5a5a] mb-4">{selectedTrack.name}</h3>
                   <div
-                    className="min-w-[26rem] min-h-[26rem] max-w-[26rem] max-h-[26rem] overflow-hidden flex items-center justify-center border-2 border-[#5a5a5a] rounded-sm mb-4"
+                    className="min-w-[20rem] min-h-[20rem] max-w-[20rem] max-h-[20rem] overflow-hidden flex items-center justify-center border-2 border-[#5a5a5a] rounded-sm mb-4"
                     style={{
                       borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
                       backgroundColor: isDarkMode ? '#222' : '#fff',
