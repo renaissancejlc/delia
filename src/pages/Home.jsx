@@ -206,7 +206,7 @@ export default function Home() {
             <a
               key={idx}
               href={`${item === 'home' ? '/' : `/#${item}`}`}
-              className={`hover:bg-[#a0c4d0] hover:text-white px-3 py-1 border-4 transition-all duration-150 ${
+              className={`hover:bg-[#a0c4d0] hover:text-[#d3d3d3] px-3 py-1 border-4 transition-all duration-150 ${
                 isDarkMode
                   ? 'border-[#f5f5f5] text-[#f5f5f5] bg-black'
                   : 'border-[#5a5a5a] text-[#5a5a5a] bg-[#8bae7e]'
@@ -363,7 +363,7 @@ export default function Home() {
             return (
               <div
                 key={track.name}
-                className="relative border-2 border-[#1e1e1e] rounded-sm overflow-hidden group bg-white"
+                className="relative border-2 border-[#1e1e1e] rounded-sm overflow-hidden group bg-[#d3d3d3]"
                 onClick={() => setSelectedTrack({ ...track, image })}
                 tabIndex={0}
                 role="button"
@@ -375,7 +375,7 @@ export default function Home() {
                   alt={title}
                   className="w-full h-full object-cover aspect-square transition-all duration-200 group-hover:scale-[1.02] group-hover:brightness-110"
                 />
-                <div className="absolute bottom-0 left-0 w-full bg-black/70 text-white text-[0.65rem] px-2 py-1 font-mono tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="absolute bottom-0 left-0 w-full bg-black/70 text-[#d3d3d3] text-[0.65rem] px-2 py-1 font-mono tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   {track.name}
                 </div>
               </div>
@@ -412,7 +412,7 @@ export default function Home() {
                 >
                   <button
                     onClick={() => setSelectedTrack(null)}
-                    className="absolute top-4 right-4 z-10 text-xl font-[#5a5a5a] border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#a0c4d0] hover:text-white transition"
+                    className="absolute top-4 right-4 z-10 text-xl font-[#5a5a5a] border-2 rounded-full w-8 h-8 flex items-center justify-center bg-transparent hover:bg-[#a0c4d0] hover:text-[#d3d3d3] transition"
                     aria-label="Close"
                     style={{
                       borderColor: isDarkMode ? '#f5f5f5' : '#5a5a5a',
@@ -536,7 +536,7 @@ export default function Home() {
                 </select>
                 <button
                   type="submit"
-                  className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-white text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-white"
+                  className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-[#d3d3d3] text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-[#d3d3d3]"
                 >
                   Subscribe
                 </button>
@@ -625,7 +625,7 @@ export default function Home() {
                 />
                 <button
                   type="submit"
-                  className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-white text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-white"
+                  className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-[#d3d3d3] text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-[#d3d3d3]"
                 >
                   Send Message
                 </button>
