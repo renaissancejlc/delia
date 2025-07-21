@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { motion } from 'framer-motion';
 import { useScroll, useTransform, AnimatePresence } from 'framer-motion';
 // Framer Motion modal animation variants
@@ -186,12 +187,12 @@ export default function Home() {
         </span>
       </button> */}
 
-      {/* Fixed Rotated Text Left Side */}
+      {/* Fixed Rotated Text Left Side
       <div className="fixed top-1/2 left-[-1.5rem] -translate-y-1/2 -rotate-90 font-[#5a5a5a] text-[2rem] tracking-tighter pointer-events-none select-none z-40 opacity-70"
         style={{ color: isDarkMode ? '#f5f5f5' : '#5a5a5a' }}
       >
         DELIA
-      </div>
+      </div> */}
 
       {/* Hero Section */}
       <header
@@ -638,14 +639,17 @@ export default function Home() {
 
       {/* Fixed Bottom Grass Frame */}
       {(() => {
-        // Generate 20 random grass images, only once per render (not on every render)
+        // Responsive grass image count based on screen size
+        const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+        const grassCount = isMobile ? 4 : 20;
         const [grassImages, setGrassImages] = React.useState([]);
         React.useEffect(() => {
-          const randomImages = Array.from({ length: 20 }, () =>
+          const randomImages = Array.from({ length: grassCount }, () =>
             `/images/grass${Math.floor(Math.random() * 6) + 1}.png`
           );
           setGrassImages(randomImages);
-        }, []);
+          // Only update when grassCount changes (screen size change)
+        }, [grassCount]);
         return (
           <div
             className="fixed bottom-0 left-0 w-full h-[200px] z-40 pointer-events-none overflow-hidden flex justify-center items-end"
@@ -661,7 +665,7 @@ export default function Home() {
                 className="h-full w-auto object-cover opacity-90"
                 style={{
                   position: 'absolute',
-                  left: `${(i / 20) * 100}%`,
+                  left: `${(i / grassCount) * 100}%`,
                   transform: `translateX(-50%)`,
                   bottom: -60,
                 }}
