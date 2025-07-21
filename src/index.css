@@ -44,19 +44,21 @@ html, body {
   cursor: none;
 }
 
-.cursor-circle {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background-color: var(--cursor-color);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate3d(-50%, -50%, 0);
-  z-index: 9999;
-  transition: transform 0.05s ease-out;
-  box-shadow: 0 0 4px var(--cursor-color);
+@media (min-width: 769px) {
+  .cursor-circle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--cursor-color);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate3d(-50%, -50%, 0);
+    z-index: 9999;
+    transition: transform 0.05s ease-out;
+    box-shadow: 0 0 4px var(--cursor-color);
+  }
 }
 
 /* Site title font override */
