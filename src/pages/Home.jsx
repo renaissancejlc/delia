@@ -497,28 +497,24 @@ export default function Home() {
                 </h3>
               </div>
               <form
+                action="https://gmail.us14.list-manage.com/subscribe/post?u=9f6693255f8704e128633714f&amp;id=622c22eec6"
+                method="post"
+                target="hidden_iframe"
                 onSubmit={(e) => {
-                  e.preventDefault();
                   showStatusBanner("✓ You're on the list. Stay tuned!");
                   e.currentTarget.reset();
                 }}
+                noValidate
                 className="flex flex-col gap-5 w-full max-w-md"
               >
-                <input
-                  type="text"
-                  name="first_name"
-                  placeholder="First Name"
-                  required
-                  className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
-                    isDarkMode
-                      ? 'text-white border-white placeholder-white'
-                      : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
-                  }`}
-                />
+                <label htmlFor="mce-EMAIL" className="text-sm font-semibold uppercase tracking-wider">
+                  Join the list
+                </label>
                 <input
                   type="email"
-                  name="email"
-                  placeholder="Your Email"
+                  name="EMAIL"
+                  id="mce-EMAIL"
+                  placeholder="Your email"
                   required
                   className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
                     isDarkMode
@@ -526,28 +522,16 @@ export default function Home() {
                       : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
                   }`}
                 />
-                <select
-                  name="country"
-                  className={`w-full px-5 py-4 text-sm font-semibold tracking-wider uppercase bg-transparent border-b-4 focus:outline-none focus:ring-0 transition placeholder:opacity-70 ${
-                    isDarkMode
-                      ? 'text-white border-white placeholder-white'
-                      : 'text-[#5a5a5a] border-[#5a5a5a] placeholder-[#5a5a5a]'
-                  }`}
-                >
-                  <option value="">Select Country</option>
-                  {[
-                    "United States", "Canada", "United Kingdom", "Australia", "Germany",
-                    "France", "Japan", "India", "Brazil", "South Korea", "Other"
-                  ].map((country) => (
-                    <option key={country} value={country}>{country}</option>
-                  ))}
-                </select>
-                <button
+                <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                  <input type="text" name="b_9f6693255f8704e128633714f_622c22eec6" tabIndex="-1" defaultValue="" />
+                </div>
+                <input
                   type="submit"
+                  name="subscribe"
+                  value="Subscribe"
                   className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-[#d3d3d3] text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-[#d3d3d3]"
-                >
-                  Subscribe
-                </button>
+                />
+                <iframe name="hidden_iframe" style={{ display: "none" }} title="hidden" />
               </form>
             </div>
           </motion.div>
