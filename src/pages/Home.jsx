@@ -650,7 +650,7 @@ export default function Home() {
         const [grassImages, setGrassImages] = React.useState([]);
         React.useEffect(() => {
           const randomImages = Array.from({ length: grassCount }, () =>
-            `/images/grass${Math.floor(Math.random() * 6) + 1}.png`
+            `/images/grass${Math.floor(Math.random() * 2) + 1}.png`
           );
           setGrassImages(randomImages);
           // Only update when grassCount changes (screen size change)

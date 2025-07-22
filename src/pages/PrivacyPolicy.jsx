@@ -172,7 +172,7 @@ export default function PrivacyPolicy() {
             const isMobile = window.innerWidth <= 768;
             const grassCount = isMobile ? 4 : 20;
             const randomImages = Array.from({ length: grassCount }, () =>
-              `/images/grass${Math.floor(Math.random() * 6) + 1}.png`
+              `/images/grass${Math.floor(Math.random() * 2) + 1}.png`
             );
             setGrassImages(randomImages);
           }
