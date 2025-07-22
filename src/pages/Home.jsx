@@ -499,11 +499,7 @@ export default function Home() {
               <form
                 action="https://gmail.us14.list-manage.com/subscribe/post?u=9f6693255f8704e128633714f&amp;id=622c22eec6"
                 method="post"
-                target="hidden_iframe"
-                onSubmit={(e) => {
-                  showStatusBanner("✓ You're on the list. Stay tuned!");
-                  e.currentTarget.reset();
-                }}
+                target="_blank"
                 noValidate
                 className="flex flex-col gap-5 w-full max-w-md"
               >
@@ -531,7 +527,6 @@ export default function Home() {
                   value="Subscribe"
                   className="w-fit px-6 py-3 font-semibold uppercase tracking-widest border-2 transition-all duration-300 hover:scale-105 active:scale-100 bg-[#d3d3d3] text-[#5a5a5a] border-[#5a5a5a] hover:bg-[#5a5a5a] hover:text-[#d3d3d3]"
                 />
-                <iframe name="hidden_iframe" style={{ display: "none" }} title="hidden" />
               </form>
             </div>
           </motion.div>
