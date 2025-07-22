@@ -354,14 +354,14 @@ export default function Home() {
         >
           {[
             { name: "Hell Breaks Loose", duration: "3:24" },
-            { name: "You & Me", duration: "3:25" },
-            { name: "Reach for the Stars", duration: "3:10" },
-            { name: "Celebration", duration: "3:05" },
-            { name: "Dead Roses", duration: "3:22" },
-            { name: "Smooth Criminal", duration: "3:05" },
-            { name: "Let Me Talk", duration: "2:39" },
-            { name: "Body High", duration: "2:36" },
-            { name: "Date Night", duration: "3:09" }
+            // { name: "You & Me", duration: "3:25" },
+            // { name: "Reach for the Stars", duration: "3:10" },
+            // { name: "Celebration", duration: "3:05" },
+            // { name: "Dead Roses", duration: "3:22" },
+            // { name: "Smooth Criminal", duration: "3:05" },
+            // { name: "Let Me Talk", duration: "2:39" },
+            // { name: "Body High", duration: "2:36" },
+            // { name: "Date Night", duration: "3:09" }
           ].map((track, index) => {
             const title = track.name;
             const image = `/images/covers/${songCovers[title.toLowerCase()]}`;
