@@ -282,9 +282,9 @@ export default function Home() {
        <section id="visuals" className={`${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}>
         <div className="flex flex-wrap justify-center gap-6 px-8 py-12 max-w-5xl mx-auto">
           {[
-            { icon: faSpotify, href: "https://open.spotify.com/artist/3rQGgfHdCqkfNNpJBbGAbI", label: "Spotify" },
-            { icon: faApple, href: "https://music.apple.com/us/artist/delia/1691680286", label: "Apple Music" },
-            { icon: faSoundcloud, href: "https://soundcloud.com/your-soundcloud-url", label: "SoundCloud" },
+            { icon: faSpotify, href: "https://open.spotify.com/artist/1JNChThnit4FJwOlggtIlg?si=Ry7ZD2ibR_uxlbiFTxZHiQ", label: "Spotify" },
+            { icon: faApple, href: "https://music.apple.com/us/artist/delia/1826468723", label: "Apple Music" },
+            { icon: faSoundcloud, href: "https://soundcloud.com/deliaproductions", label: "SoundCloud" },
           ].map((platform, idx) => (
             <motion.a
               key={idx}
@@ -712,7 +712,7 @@ export default function Home() {
       >
         <div className="flex flex-row items-center justify-center gap-6 text-2xl mb-2">
           <a
-            href="https://instagram.com/"
+            href="https://www.instagram.com/deliaproductions/#"
             aria-label="Instagram"
             target="_blank"
             rel="noopener noreferrer"
@@ -721,7 +721,7 @@ export default function Home() {
             <FontAwesomeIcon icon={faInstagram} />
           </a>
           <a
-            href="https://youtube.com/"
+            href="https://www.youtube.com/@DELIAMOMENTS"
             aria-label="YouTube"
             target="_blank"
             rel="noopener noreferrer"
@@ -730,7 +730,7 @@ export default function Home() {
             <FontAwesomeIcon icon={faYoutube} />
           </a>
           <a
-            href="https://open.spotify.com/artist/3rQGgfHdCqkfNNpJBbGAbI"
+            href="https://open.spotify.com/artist/1JNChThnit4FJwOlggtIlg?si=Ry7ZD2ibR_uxlbiFTxZHiQ"
             aria-label="Spotify"
             target="_blank"
             rel="noopener noreferrer"
@@ -739,7 +739,7 @@ export default function Home() {
             <FontAwesomeIcon icon={faSpotify} />
           </a>
           <a
-            href="https://tiktok.com/"
+            href="https://www.tiktok.com/@deliaproductions"
             aria-label="TikTok"
             target="_blank"
             rel="noopener noreferrer"
@@ -748,7 +748,7 @@ export default function Home() {
             <FontAwesomeIcon icon={faTiktok} />
           </a>
           <a
-            href="https://music.apple.com/us/artist/delia/1691680286"
+            href="https://music.apple.com/us/artist/delia/1826468723"
             aria-label="Apple Music"
             target="_blank"
             rel="noopener noreferrer"
@@ -757,7 +757,7 @@ export default function Home() {
             <FontAwesomeIcon icon={faApple} />
           </a>
           <a
-            href="https://soundcloud.com/your-soundcloud-url"
+            href="https://soundcloud.com/deliaproductions"
             aria-label="SoundCloud"
             target="_blank"
             rel="noopener noreferrer"
