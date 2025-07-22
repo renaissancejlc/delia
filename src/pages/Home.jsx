@@ -349,44 +349,47 @@ export default function Home() {
           <br></br>
         </h2>
         {/* Responsive grid for music tracks with brutalist frames and hover overlays */}
-        <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[1fr]"
-        >
-          {[
-            { name: "Hell Breaks Loose", duration: "3:24" },
-            // { name: "You & Me", duration: "3:25" },
-            // { name: "Reach for the Stars", duration: "3:10" },
-            // { name: "Celebration", duration: "3:05" },
-            // { name: "Dead Roses", duration: "3:22" },
-            // { name: "Smooth Criminal", duration: "3:05" },
-            // { name: "Let Me Talk", duration: "2:39" },
-            // { name: "Body High", duration: "2:36" },
-            // { name: "Date Night", duration: "3:09" }
-          ].map((track, index) => {
-            const title = track.name;
-            const image = `/images/covers/${songCovers[title.toLowerCase()]}`;
-            return (
-              <div
-                key={track.name}
-                className="relative border-2 border-[#1e1e1e] rounded-sm overflow-hidden group bg-[#d3d3d3]"
-                onClick={() => setSelectedTrack({ ...track, image })}
-                tabIndex={0}
-                role="button"
-                aria-label={`Open details for ${track.name}`}
-                style={{ cursor: "pointer" }}
-              >
-                <img
-                  src={image}
-                  alt={title}
-                  className="w-full h-full object-cover aspect-square transition-all duration-200 group-hover:scale-[1.02] group-hover:brightness-110"
-                />
-                <div className="absolute bottom-0 left-0 w-full bg-black/70 text-[#d3d3d3] text-[0.65rem] px-2 py-1 font-mono tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  {track.name}
+        {/* Outer container for grid centering */}
+        <div className="flex justify-center items-center w-full">
+          <motion.div
+            className="grid grid-cols-1 gap-8 max-w-md w-full"
+          >
+            {[
+              { name: "Hell Breaks Loose", duration: "3:24" },
+              // { name: "You & Me", duration: "3:25" },
+              // { name: "Reach for the Stars", duration: "3:10" },
+              // { name: "Celebration", duration: "3:05" },
+              // { name: "Dead Roses", duration: "3:22" },
+              // { name: "Smooth Criminal", duration: "3:05" },
+              // { name: "Let Me Talk", duration: "2:39" },
+              // { name: "Body High", duration: "2:36" },
+              // { name: "Date Night", duration: "3:09" }
+            ].map((track, index) => {
+              const title = track.name;
+              const image = `/images/covers/${songCovers[title.toLowerCase()]}`;
+              return (
+                <div
+                  key={track.name}
+                  className="relative border-2 border-[#1e1e1e] rounded-sm overflow-hidden group bg-[#d3d3d3]"
+                  onClick={() => setSelectedTrack({ ...track, image })}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Open details for ${track.name}`}
+                  style={{ cursor: "pointer" }}
+                >
+                  <img
+                    src={image}
+                    alt={title}
+                    className="w-full h-full object-cover aspect-square transition-all duration-200 group-hover:scale-[1.02] group-hover:brightness-110"
+                  />
+                  <div className="absolute bottom-0 left-0 w-full bg-black/70 text-[#d3d3d3] text-[0.65rem] px-2 py-1 font-mono tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    {track.name}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
 
         {/* Modal */}
         <AnimatePresence>
