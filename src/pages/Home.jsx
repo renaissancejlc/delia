@@ -575,7 +575,7 @@ export default function Home() {
                   const formElement = e.currentTarget;
                   const formData = new FormData(formElement);
                   try {
-                    const response = await fetch("https://formsubmit.co/ajax/contactvadisstudio@gmail.com", {
+                    const response = await fetch("https://formsubmit.co/ajax/madebydelia1@gmail.com", {
                       method: "POST",
                       headers: { "Accept": "application/json" },
                       body: formData
