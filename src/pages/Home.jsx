@@ -282,12 +282,15 @@ export default function Home() {
        <section id="visuals" className={`${isDarkMode ? 'bg-transparent text-[#f5f5f5]' : 'bg-transparent text-[#5a5a5a]'}`}>
         <div className="flex flex-wrap justify-center gap-6 px-8 py-12 max-w-5xl mx-auto">
           {[
-            'should we do',
-            'something here',
-            'idk',
-          ].map((label, idx) => (
-            <motion.div
+            { icon: faSpotify, href: "https://open.spotify.com/artist/3rQGgfHdCqkfNNpJBbGAbI", label: "Spotify" },
+            { icon: faApple, href: "https://music.apple.com/us/artist/delia/1691680286", label: "Apple Music" },
+            { icon: faSoundcloud, href: "https://soundcloud.com/your-soundcloud-url", label: "SoundCloud" },
+          ].map((platform, idx) => (
+            <motion.a
               key={idx}
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               whileHover={{ scale: 1.1, skewX: 3 }}
@@ -303,11 +306,13 @@ export default function Home() {
                     ? 'polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)'
                     : 'polygon(0 0, 100% 5%, 100% 95%, 0% 100%)',
               }}
+              aria-label={platform.label}
             >
-              {label}
-            </motion.div>
+              <FontAwesomeIcon icon={platform.icon} className="text-2xl" />
+            </motion.a>
           ))}
-        </div>       </section>
+        </div>
+      </section>
 
 
         {/* YouTube Embed with no padding, background depends on dark mode */}
@@ -483,7 +488,7 @@ export default function Home() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
               <div className="text-left">
-                <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[0.95] uppercase font-[#5a5a5a] tracking-[-0.09em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
+              <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[1] uppercase font-[#5a5a5a] tracking-[-0.02em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
                   JOIN THE <span className="text-[#96bdcb] underline underline-offset-8 decoration-[8px]">DELIA LIST</span><br />
                   & GET UPDATES.
                 </h3>
