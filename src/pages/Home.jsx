@@ -322,7 +322,7 @@ export default function Home() {
         >
           <iframe
             className="w-full aspect-video"
-            src="https://www.youtube.com/embed/zlXD9VStR-o?si=P_GsjgeW6wOk-BXz"
+            src="https://www.youtube.com/embed/EgG9nXE4WDA?si=e-H_-LlScOrYr7N_"
             title="DELIA Tour Preview"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
