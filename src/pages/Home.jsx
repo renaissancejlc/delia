@@ -322,7 +322,7 @@ export default function Home() {
         >
           <iframe
             className="w-full aspect-video"
-            src="https://www.youtube.com/embed/shqQJgJ4W5k?si=sMdELTZTZOkBHoR4"
+            src="https://www.youtube.com/embed/zlXD9VStR-o?si=P_GsjgeW6wOk-BXz"
             title="DELIA Tour Preview"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -355,7 +355,14 @@ export default function Home() {
             className="grid grid-cols-1 gap-8 max-w-md w-full"
           >
             {[
-              { name: "Hell Breaks Loose", duration: "3:24" },
+              {
+                name: "Hell Breaks Loose",
+                duration: "3:24",
+                spotify: "https://open.spotify.com/track/77CEEwHCJvnHZp29uCrQSy?si=f2fde6dd7c64424e",
+                youtube: "https://youtu.be/zlXD9VStR-o?si=P_GsjgeW6wOk-BXz",
+                soundcloud: "https://soundcloud.com/deliaproductions/blake?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+                appleMusic: "https://music.apple.com/us/album/blake/1826623258?i=1826623259"
+              },
               // { name: "You & Me", duration: "3:25" },
               // { name: "Reach for the Stars", duration: "3:10" },
               // { name: "Celebration", duration: "3:05" },
@@ -448,18 +455,26 @@ export default function Home() {
                     Duration: <span className="font-mono">{selectedTrack.duration}</span>
                   </div> */}
                   <div className="flex justify-center gap-8 text-2xl mb-2">
-                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="Spotify">
-                      <FontAwesomeIcon icon={faSpotify} />
-                    </span>
-                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="Apple Music">
-                      <FontAwesomeIcon icon={faApple} />
-                    </span>
-                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="YouTube">
-                      <FontAwesomeIcon icon={faYoutube} />
-                    </span>
-                    <span className="cursor-pointer opacity-70 hover:opacity-100" title="SoundCloud">
-                      <FontAwesomeIcon icon={faSoundcloud} className="text-xl mx-2 hover:text-orange-500 cursor-pointer" />
-                    </span>
+                    {selectedTrack.spotify && (
+                      <a href={selectedTrack.spotify} target="_blank" rel="noopener noreferrer" title="Spotify" className="cursor-pointer opacity-70 hover:opacity-100">
+                        <FontAwesomeIcon icon={faSpotify} />
+                      </a>
+                    )}
+                    {selectedTrack.appleMusic && (
+                      <a href={selectedTrack.appleMusic} target="_blank" rel="noopener noreferrer" title="Apple Music" className="cursor-pointer opacity-70 hover:opacity-100">
+                        <FontAwesomeIcon icon={faApple} />
+                      </a>
+                    )}
+                    {selectedTrack.youtube && (
+                      <a href={selectedTrack.youtube} target="_blank" rel="noopener noreferrer" title="YouTube" className="cursor-pointer opacity-70 hover:opacity-100">
+                        <FontAwesomeIcon icon={faYoutube} />
+                      </a>
+                    )}
+                    {selectedTrack.soundcloud && (
+                      <a href={selectedTrack.soundcloud} target="_blank" rel="noopener noreferrer" title="SoundCloud" className="cursor-pointer opacity-70 hover:opacity-100">
+                        <FontAwesomeIcon icon={faSoundcloud} />
+                      </a>
+                    )}
                   </div>
                 </motion.div>
               </div>
