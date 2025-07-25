@@ -17,6 +17,7 @@ import { faInstagram, faYoutube, faSpotify, faTiktok, faApple, faSoundcloud } fr
 import { faSun, faMoon, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const songCovers = {
+  'blake': 'blake.png',
   'hell breaks loose': 'hell-breaks-loose.jpeg',
   'you & me': 'you-&-me.jpg',
   'reach for the stars': 'reach-for-the-stars.jpeg',
@@ -260,7 +261,6 @@ export default function Home() {
         >
           Who is DELIA?
         </motion.h2>
-
         <motion.div
           initial={{ opacity: 0, x: 50, skewX: -10 }}
           whileInView={{ opacity: 1, x: 0, skewX: 0 }}
@@ -356,8 +356,8 @@ export default function Home() {
           >
             {[
               {
-                name: "Hell Breaks Loose",
-                duration: "3:24",
+                name: "BLAKE",
+                duration: "4:26",
                 spotify: "https://open.spotify.com/track/77CEEwHCJvnHZp29uCrQSy?si=f2fde6dd7c64424e",
                 youtube: "https://youtu.be/zlXD9VStR-o?si=P_GsjgeW6wOk-BXz",
                 soundcloud: "https://soundcloud.com/deliaproductions/blake?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
