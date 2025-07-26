@@ -322,7 +322,7 @@ export default function Home() {
         >
           <iframe
             className="w-full aspect-video"
-            src="https://www.youtube.com/embed/g3aZo9JAOyM?si=y3lhHzz7A_cxEWJ9&amp;controls=0"
+            src="https://www.youtube.com/embed/DLCwxgzsoS4?si=EJO9nVXGGUXbuCz-&amp;controls=0"
             title="DELIA Tour Preview"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -359,7 +359,7 @@ export default function Home() {
                 name: "BLAKE",
                 duration: "4:26",
                 spotify: "https://open.spotify.com/track/77CEEwHCJvnHZp29uCrQSy?si=f2fde6dd7c64424e",
-                youtube: "https://youtu.be/g3aZo9JAOyM?si=y3lhHzz7A_cxEWJ9",
+                youtube: "https://youtu.be/DLCwxgzsoS4?si=JtuJ0LSSkb9YotZD",
                 soundcloud: "https://soundcloud.com/deliaproductions/blake?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
                 appleMusic: "https://music.apple.com/us/album/blake/1826623258?i=1826623259"
               },
