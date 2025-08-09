@@ -322,7 +322,7 @@ export default function Home() {
         >
           <iframe
             className="w-full aspect-video"
-            src="https://www.youtube.com/embed/DLCwxgzsoS4?si=EJO9nVXGGUXbuCz-&amp;controls=0"
+            src="https://www.youtube.com/embed/g3aZo9JAOyM?si=y3lhHzz7A_cxEWJ9&amp;controls=0"
             title="DELIA Tour Preview"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -359,7 +359,7 @@ export default function Home() {
                 name: "BLAKE",
                 duration: "4:26",
                 spotify: "https://open.spotify.com/track/77CEEwHCJvnHZp29uCrQSy?si=f2fde6dd7c64424e",
-                youtube: "https://youtu.be/DLCwxgzsoS4?si=JtuJ0LSSkb9YotZD",
+                youtube: "https://youtu.be/g3aZo9JAOyM?si=y3lhHzz7A_cxEWJ9",
                 soundcloud: "https://soundcloud.com/deliaproductions/blake?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
                 appleMusic: "https://music.apple.com/us/album/blake/1826623258?i=1826623259"
               },
@@ -504,31 +504,36 @@ export default function Home() {
             viewport={{ once: true }}
             className="w-full md:col-span-6 flex flex-col gap-8"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
               <div className="text-left">
                 <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[1] uppercase font-[#5a5a5a] tracking-[-0.02em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
                   JOIN THE <span className="text-[#96bdcb] underline underline-offset-8 decoration-[8px]">DELIA LIST</span><br />
                   & GET UPDATES.
                 </h3>
               </div>
+              {/* Hidden iframe for Mailchimp response */}
+              <iframe
+                name="mchimp-iframe"
+                title="Mailchimp submission"
+                style={{ display: 'none' }}
+              />
               <form
                 action="https://gmail.us14.list-manage.com/subscribe/post?u=9f6693255f8704e128633714f&amp;id=622c22eec6"
                 method="post"
                 target="mchimp-iframe"
                 noValidate
+                onSubmit={(e) => {
+                  // allow native submit to the hidden iframe (no preventDefault)
+                  const formEl = e.currentTarget;
+                  // show immediate local success message
+                  showStatusBanner("✓ You're on the DELIA list. Check your email to confirm.");
+                  // optimistically reset the form after a brief delay
+                  setTimeout(() => {
+                    try { formEl.reset(); } catch {}
+                  }, 400);
+                }}
                 className="flex flex-col gap-5 w-full max-w-md"
               >
-                {/* Hardened hidden iframe for Mailchimp form submission */}
-                <iframe
-                  name="mchimp-iframe"
-                  title="Mailchimp submission"
-                  style={{ display: 'none' }}
-                  tabIndex={-1}
-                  aria-hidden="true"
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                  sandbox="allow-forms"
-                />
                 <label htmlFor="mce-EMAIL" className="text-sm font-semibold uppercase tracking-wider">
                   Join the list
                 </label>
