@@ -506,7 +506,7 @@ export default function Home() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
               <div className="text-left">
-              <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[1] uppercase font-[#5a5a5a] tracking-[-0.02em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
+                <h3 className="text-[4.5rem] md:text-[7.5rem] leading-[1] uppercase font-[#5a5a5a] tracking-[-0.02em] select-none italic text-shadow-md drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]">
                   JOIN THE <span className="text-[#96bdcb] underline underline-offset-8 decoration-[8px]">DELIA LIST</span><br />
                   & GET UPDATES.
                 </h3>
@@ -514,10 +514,21 @@ export default function Home() {
               <form
                 action="https://gmail.us14.list-manage.com/subscribe/post?u=9f6693255f8704e128633714f&amp;id=622c22eec6"
                 method="post"
-                target="_blank"
+                target="mchimp-iframe"
                 noValidate
                 className="flex flex-col gap-5 w-full max-w-md"
               >
+                {/* Hardened hidden iframe for Mailchimp form submission */}
+                <iframe
+                  name="mchimp-iframe"
+                  title="Mailchimp submission"
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  referrerPolicy="no-referrer"
+                  loading="lazy"
+                  sandbox="allow-forms"
+                />
                 <label htmlFor="mce-EMAIL" className="text-sm font-semibold uppercase tracking-wider">
                   Join the list
                 </label>
