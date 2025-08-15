@@ -18,6 +18,7 @@ import { faSun, faMoon, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const songCovers = {
   'blake': 'blake.png',
+  'forgotten dream': 'forgotten-dreams.jpeg',
   'hell breaks loose': 'hell-breaks-loose.jpeg',
   'you & me': 'you-&-me.jpg',
   'reach for the stars': 'reach-for-the-stars.jpeg',
@@ -26,7 +27,7 @@ const songCovers = {
   'smooth criminal': 'smooth-criminal.png',
   'let me talk': 'let-me-talk.jpg',
   'body high': 'body-high.png',
-  'date night': 'date-night.jpg',
+  'date night': 'date-night.jpg'
 };
 
 
@@ -352,7 +353,7 @@ export default function Home() {
         {/* Outer container for grid centering */}
         <div className="flex justify-center items-center w-full">
           <motion.div
-            className="grid grid-cols-1 gap-8 max-w-md w-full"
+            className="grid grid-cols-2 gap-8 max-w-md w-full"
           >
             {[
               {
@@ -362,6 +363,14 @@ export default function Home() {
                 youtube: "https://youtu.be/g3aZo9JAOyM?si=y3lhHzz7A_cxEWJ9",
                 soundcloud: "https://soundcloud.com/deliaproductions/blake?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
                 appleMusic: "https://music.apple.com/us/album/blake/1826623258?i=1826623259"
+              },
+              {
+                name: "FORGOTTEN DREAM",
+                duration: "2:33",
+                spotify: "https://open.spotify.com/track/4Tbb70ewSGSJpv0VSZ2pwC?si=d069ff87f61d4894",
+                youtube: "https://youtu.be/g3aZo9JAOyM?si=y3lhHzz7A_cxEWJ9",
+                soundcloud: "https://on.soundcloud.com/C3zw6aMLXYzkzGwRTA",
+                appleMusic: "https://music.apple.com/us/album/forgotten-dream-feat-ciscaux-koi/1830848709?i=1830848710"
               },
               // { name: "You & Me", duration: "3:25" },
               // { name: "Reach for the Stars", duration: "3:10" },
